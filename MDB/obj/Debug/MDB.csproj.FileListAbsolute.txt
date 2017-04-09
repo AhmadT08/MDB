@@ -1,0 +1,3 @@
+C:\Users\Ahmad\Documents\Visual Studio 2015\Projects\MDB\MDB\bin\Debug\MDB.exe.config
+C:\Users\Ahmad\Documents\Visual Studio 2015\Projects\MDB\MDB\bin\Debug\Multimedia-Database.exe.config
+C:\Users\Ahmad\Documents\Visual Studio 2015\Projects\MDB\MultimediaDB\MDB\bin\Debug\Multimedia-Database.exe.config
