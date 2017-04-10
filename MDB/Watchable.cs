@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using Db4objects.Db4o;
 
 namespace MDB
 {
@@ -19,8 +20,8 @@ namespace MDB
         private List<User> _subscribers;
         private String _titleName;
 
-        public Watchable(List<Award> awardNominations, List<Award> awardWins, List<String> genre, 
-                         List<Person> mainCast, String mpaaRating, String productionStatus, double rating, 
+        public Watchable(List<Award> awardNominations, List<Award> awardWins, List<String> genre,
+                         List<Person> mainCast, String mpaaRating, String productionStatus, double rating,
                          List<User> subscribers, String titleName)
         {
             _awardNominations = awardNominations;
