@@ -1,34 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace MDB
 {
-    class Episode
+    internal class Episode
     {
-        private int number;
-        private int season;
-        private List<Person> cast;
-        private double rating;
-        private Show show;
-        
+        private int _number;
+        private int _season;
+        private List<Person> _cast;
+        private double _rating;
+        private Show _show;
 
         public Episode(int number, int season, List<Person> cast, double rating, Show show)
         {
-            this.number = number;
-            this.season = season;
-            this.cast = cast;
-            this.rating = rating;
-            this.show = show;
+            _number = number;
+            _season = season;
+            _cast = cast;
+            _rating = rating;
+            _show = show;
         }
 
         public Episode()
         {
-            
         }
 
-        
+        public int Number { get; set; }
+
+        public int Season { get; set; }
+
+        public List<Person> Cast { get; set; }
+
+        public double Rating { get; set; }
+
+        public Show Show { get; set; }
     }
 }

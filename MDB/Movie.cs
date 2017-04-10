@@ -9,16 +9,13 @@ namespace MDB
 {
     class Movie : Watchable
     {
-        private DateTime releaseDate;
-        private int runTime;
-
         public Movie(List<Award> awardNominations, List<Award> awardWins, List<String> genre,
-                         List<Person> mainCast, String MPAARating, String productionStatus, double rating,
+                         List<Person> mainCast, String mpaaRating, String productionStatus, double rating,
                          List<User> subscribers, String titleName, DateTime release, int time) : base(awardNominations,
-                         awardWins, genre, mainCast, MPAARating, productionStatus, rating, subscribers, titleName)
+                         awardWins, genre, mainCast, mpaaRating, productionStatus, rating, subscribers, titleName)
         {
-            this.releaseDate = release;
-            this.runTime = time;
+            ReleaseDate = release;
+            RunTime = time;
         }
 
         public Movie() : base()
@@ -26,25 +23,10 @@ namespace MDB
             
         }
 
-        public DateTime getReleaseDate()
-        {
-            return releaseDate;
-        }
+        public DateTime ReleaseDate { get; set; }
 
-        public void setReleaseDate(DateTime date)
-        {
-            releaseDate = date;
-        }
+        public int RunTime { get; set; }
 
-        public int getRunTime()
-        {
-            return runTime;
-        }
-
-        public void setRunTime(int time)
-        {
-            runTime = time;
-        }
 
     }
 }

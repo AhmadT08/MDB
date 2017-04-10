@@ -9,29 +9,29 @@ namespace MDB
 {
     class Watchable
     {
-        private List<Award> awardNominations;
-        private List<Award> awardWins;
-        private List<String> genre;
-        private List<Person> mainCast;
-        private String MPAARating;
-        private String productionStatus;
-        private double rating;
-        private List<User> subscribers;
-        private String titleName;
+        private List<Award> _awardNominations;
+        private List<Award> _awardWins;
+        private List<String> _genre;
+        private List<Person> _mainCast;
+        private String _mpaaRating;
+        private String _productionStatus;
+        private double _rating;
+        private List<User> _subscribers;
+        private String _titleName;
 
         public Watchable(List<Award> awardNominations, List<Award> awardWins, List<String> genre, 
-                         List<Person> mainCast, String MPAARating, String productionStatus, double rating, 
+                         List<Person> mainCast, String mpaaRating, String productionStatus, double rating, 
                          List<User> subscribers, String titleName)
         {
-            this.awardNominations = awardNominations;
-            this.awardWins = awardWins;
-            this.genre = genre;
-            this.mainCast = mainCast;
-            this.MPAARating = MPAARating;
-            this.productionStatus = productionStatus;
-            this.rating = rating;
-            this.subscribers = subscribers;
-            this.titleName = titleName;
+            _awardNominations = awardNominations;
+            _awardWins = awardWins;
+            _genre = genre;
+            _mainCast = mainCast;
+            _mpaaRating = mpaaRating;
+            _productionStatus = productionStatus;
+            _rating = rating;
+            _subscribers = subscribers;
+            _titleName = titleName;
         }
 
         public Watchable()
@@ -39,109 +39,47 @@ namespace MDB
 
         }
 
-        public List<Award> getAwardNominations()
+        public List<Award> AwardNominations { get; set; }
+
+        public List<Award> AwardWins { get; set; }
+
+        public List<string> Genre { get; set; }
+
+        public List<Person> MainCast { get; set; }
+
+        public string MpaaRating { get; set; }
+
+        public string ProductionStatus { get; set; }
+
+        public double Rating { get; set; }
+
+        public List<User> Subscribers { get; set; }
+
+        public string TitleName { get; set; }
+
+        public void AddAwardNomination(Award awardNomination)
         {
-            return awardNominations;
+            _awardNominations.Add(awardNomination);
         }
 
-        public void addAwardNomination(Award awardNomination)
+        public void AddAwardWin(Award awardWin)
         {
-            awardNominations.Add(awardNomination);
+            _awardWins.Add(awardWin);
         }
 
-        public List<Award> getAwardWins()
+        public void AddToMainCast(Person cast)
         {
-            return awardWins;
+            _mainCast.Add(cast);
         }
 
-        public void addAwardWin(Award awardWin)
+        public void AddSubscriber(User sub)
         {
-            awardWins.Add(awardWin);
+            _subscribers.Add(sub);
         }
 
-        public List<String> getGenre()
+        public void RemoveSubscriber(User sub)
         {
-            return genre;
-        }
-
-        public void setGenre(List<String> genre)
-        {
-            this.genre = genre;
-        }
-
-        public List<Person> getMainCast()
-        {
-            return mainCast;
-        }
-
-        public void setMainCast(List<Person> mainCast)
-        {
-            this.mainCast = mainCast;
-        }
-
-        public void addToMainCast(Person cast)
-        {
-            mainCast.Add(cast);
-        }
-
-        public String getMPAARating()
-        {
-            return MPAARating;
-        }
-
-        public void setMPAARating(String MPAARating)
-        {
-            this.MPAARating = MPAARating;
-        }
-
-        public String getProductionStatus()
-        {
-            return productionStatus;
-        }
-
-        public void setProductionStatus(String productionStatus)
-        {
-            this.productionStatus = productionStatus;
-        }
-
-        public double getRating()
-        {
-            return rating;
-        }
-
-        public void setRating(double rating)
-        {
-            this.rating = rating;
-        }
-
-        public List<User> getSubscribers()
-        {
-            return subscribers;
-        }
-
-        public void setSubscribers(List<User> subscribers)
-        {
-            this.subscribers = subscribers;
-        }
-
-        public void addSubscriber(User sub)
-        {
-            subscribers.Add(sub);
-        }
-
-        public void removeSubscriber(User sub)
-        {
-            subscribers.Remove(sub);
-        }
-
-        public String getTitleName()
-        {
-            return titleName;
-        }
-
-        public void setTitleName(String titleName)
-        {
-            this.titleName = titleName;
+            _subscribers.Remove(sub);
         }
 
     }
