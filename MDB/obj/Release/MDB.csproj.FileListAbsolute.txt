@@ -1,4 +1,0 @@
-C:\Users\Ahmad\Documents\Visual Studio 2015\Projects\MDB\MultimediaDB\MDB\bin\Release\Multimedia-Database.exe.config
-C:\Users\Ahmad\Documents\Visual Studio 2015\Projects\MDB\MultimediaDB\MDB\obj\Release\MDB.Form1.resources
-C:\Users\Ahmad\Documents\Visual Studio 2015\Projects\MDB\MultimediaDB\MDB\obj\Release\MDB.Properties.Resources.resources
-C:\Users\Ahmad\Documents\Visual Studio 2015\Projects\MDB\MultimediaDB\MDB\obj\Release\MDB.csproj.GenerateResource.Cache
