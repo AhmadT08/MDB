@@ -8,38 +8,6 @@ namespace MDB
 {
     class Person
     {
-        private int _age;
-        private List<Award> _awardNominations;
-        private List<Award> _awardWins;
-        private DateTime _dateOfBirth;
-        private String _ethnicity;
-        private List<Feature> _features;
-        private FullName _name;
-        private char _gender;
-        private int _height;
-        private String _nationality;
-        private List<User> _subscribers;
-
-        public Person(int age, List<Award> awardNominations, List<Award> awardWins, DateTime dateOfBirth, string ethnicity, List<Feature> features, FullName name, char gender, int height, string nationality, List<User> subscribers)
-        {
-            _age = age;
-            _awardNominations = awardNominations;
-            _awardWins = awardWins;
-            _dateOfBirth = dateOfBirth;
-            _ethnicity = ethnicity;
-            _features = features;
-            _name = name;
-            _gender = gender;
-            _height = height;
-            _nationality = nationality;
-            _subscribers = subscribers;
-        }
-
-        public Person()
-        {
-            
-        }
-
         public int Age { get; set; }
 
         public List<Award> AwardNominations { get; set; }
@@ -62,14 +30,33 @@ namespace MDB
 
         public List<User> Subscribers { get; set; }
 
+        public Person(int age, List<Award> awardNominations, List<Award> awardWins, DateTime dateOfBirth, string ethnicity, List<Feature> features, FullName name, char gender, int height, string nationality, List<User> subscribers)
+        {
+            Age = age;
+            AwardNominations = awardNominations;
+            AwardWins = awardWins;
+            DateOfBirth = dateOfBirth;
+            Ethnicity = ethnicity;
+            Features = features;
+            Name = name;
+            Gender = gender;
+            Height = height;
+            Nationality = nationality;
+            Subscribers = subscribers;
+        }
+
+        public Person()
+        {
+
+        }
         public void AddSubscriber(User sub)
         {
-            _subscribers.Add(sub);
+            Subscribers.Add(sub);
         }
 
         public void RemoveSubscriber(User sub)
         {
-            _subscribers.Remove(sub);
+            Subscribers.Remove(sub);
         }
 
         public void AddFeature(Feature feat)
