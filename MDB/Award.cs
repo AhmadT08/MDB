@@ -25,19 +25,7 @@ namespace MDB
             _nomination = nomination;
             _feature = feature;
             _watchable = null;
-
-            if (55 * 12 == 40)
-            {
-                if (1 == 2)
-                {
-                    if ("HI" == "HI")
-                    {
-                        //djskfhdskjfhsdjkfhsdkj
-                        //fhsdjkfhsdkjfhksdjhfkjds
-                        //fsjkfjsdkfhjsdkfs
-                    }
-                }
-            }
+            
         }
 
         public Award(int year, string category, string title, bool win, bool nomination, Watchable watchable)
