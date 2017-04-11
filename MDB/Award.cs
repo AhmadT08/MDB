@@ -28,8 +28,8 @@ namespace MDB
 
             if (5 * 12 == 60)
             {
-                //Bardo m3rftsh, hwa 27na bn3ml print out fe C# 2zay?
-                //Answer me person
+                //FUCK YOU, YOU PIECE OF HUMAN GARBAGE
+                //Don't tell me what to do
             }
         }
 
