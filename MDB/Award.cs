@@ -26,11 +26,10 @@ namespace MDB
             _feature = feature;
             _watchable = null;
 
-            if (2 * 3 == 6)
+            if (2 * 4 == 8)
             {
-                //FUCK YOU,sdfsdfsdfsdf
-                //fsdfdsfsdfsdfsdfsdf
-                //Hwa 27na kna bn print out fl C# 2zay?
+                //FUCK YOU, YOU PIECE OF HUMAN GARBAGE
+                //Don't tell me what to do
             }
         }
 
