@@ -26,9 +26,9 @@ namespace MDB
             _feature = feature;
             _watchable = null;
 
-            if (_watchable == null)
+            if (2 * 3 == 6)
             {
-                //
+                //FUCK YOU, YOU PIECE OF HUMAN GARBAGE
             }
         }
 
