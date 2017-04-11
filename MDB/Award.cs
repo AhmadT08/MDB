@@ -30,8 +30,12 @@ namespace MDB
             {
                 if (1 == 2)
                 {
-                    //dsfdsfsdfsdfsfsfd
-                    //fsdfdsfsdf
+                    if ("HI" == "HI")
+                    {
+                        //djskfhdskjfhsdjkfhsdkj
+                        //fhsdjkfhsdkjfhksdjhfkjds
+                        //fsjkfjsdkfhjsdkfs
+                    }
                 }
             }
         }
