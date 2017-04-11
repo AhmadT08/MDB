@@ -25,6 +25,11 @@ namespace MDB
             _nomination = nomination;
             _feature = feature;
             _watchable = null;
+
+            if (_watchable == null)
+            {
+                //
+            }
         }
 
         public Award(int year, string category, string title, bool win, bool nomination, Watchable watchable)
