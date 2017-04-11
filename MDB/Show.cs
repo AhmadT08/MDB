@@ -8,11 +8,6 @@ namespace MDB
 {
     class Show : Watchable
     {
-        private int _seasons;
-        private int _numberOfEpisodes;
-        private DateTime _pilotDate;
-        private List<Episode> _episodeList;
-
         public int Seasons { get; set; }
 
         public int NumberOfEpisodes { get; set; }
@@ -21,28 +16,18 @@ namespace MDB
 
         public List<Episode> EpisodeList { get; set; }
 
-        public Show(List<Award> awardNominations, List<Award> awardWins, List<String> genre,
-                         List<Person> mainCast, String mpaaRating, String productionStatus, double rating,
-                         List<User> subscribers, String titleName, DateTime pilot, int episodes, int season, List<Episode> epList) : base(awardNominations,
+        public Show(List<Award> awardNominations, List<Award> awardWins, List<string> genre, List<Person> mainCast,
+                     string mpaaRating, string productionStatus, double rating, List<User> subscribers, string titleName,
+                     int seasons, int numberOfEpisodes, DateTime pilotDate, List<Episode> episodeList) : base(awardNominations,
                          awardWins, genre, mainCast, mpaaRating, productionStatus, rating, subscribers, titleName)
         {
-            Seasons = season;
-            NumberOfEpisodes = episodes;
-            PilotDate = pilot;
-            EpisodeList = epList;
+            Seasons = seasons;
+            NumberOfEpisodes = numberOfEpisodes;
+            PilotDate = pilotDate;
+            EpisodeList = episodeList;
         }
 
-        public Show(List<Award> awardNominations, List<Award> awardWins, List<String> genre,
-                         List<Person> mainCast, String mpaaRating, String productionStatus, double rating,
-                         List<User> subscribers, String titleName, DateTime pilot, int episodes, int season) : base(awardNominations,
-                         awardWins, genre, mainCast, mpaaRating, productionStatus, rating, subscribers, titleName)
-        {
-            Seasons = season;
-            NumberOfEpisodes = episodes;
-            PilotDate = pilot;
-        }
-
-        public Show() : base()
+        public Show()
         {
 
         }
@@ -51,6 +36,6 @@ namespace MDB
         {
             EpisodeList.Add(episode);
         }
-        
+
     }
 }

@@ -8,16 +8,14 @@ namespace MDB
 {
     class FullName
     {
-        private String _firstName;
-        private String _lastName;
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
         public FullName(string firstName, string lastName)
         {
-            _firstName = firstName;
-            _lastName = lastName;
+            FirstName = firstName;
+            LastName = lastName;
         }
-
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
     }
 }

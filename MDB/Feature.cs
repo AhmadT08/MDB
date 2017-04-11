@@ -8,24 +8,6 @@ namespace MDB
 {
     class Feature
     {
-        private String _actingRole;
-        private Watchable _entity;
-        private Person _person;
-        private String _productionRole;
-
-        public Feature(string actingRole, Watchable entity, Person person, string productionRole)
-        {
-            _actingRole = actingRole;
-            _entity = entity;
-            _person = person;
-            _productionRole = productionRole;
-        }
-
-        public Feature()
-        {
-            
-        }
-
         public string ActingRole { get; set; }
 
         public Watchable Entity { get; set; }
@@ -33,5 +15,20 @@ namespace MDB
         public Person ThePerson { get; set; }
 
         public string ProductionRole { get; set; }
+
+        public Feature(string actingRole, Watchable entity, Person thePerson, string productionRole)
+        {
+            ActingRole = actingRole;
+            Entity = entity;
+            ThePerson = thePerson;
+            ProductionRole = productionRole;
+        }
+
+        public Feature()
+        {
+
+        }
+
+
     }
 }
