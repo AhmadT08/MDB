@@ -8,34 +8,6 @@ namespace MDB
 {
     class User
     {
-        private String _password;
-        private String _username;
-        private List<Watchable> _watched;
-        private List<Watchable> _watchList;
-        private FullName _name;
-        private DateTime _dateOfBirth;
-        private String _email;
-        private List<Watchable> _watchableSubscriptions;
-        private List<Person> _personSubscriptions;
-
-        public User(string password, string username, List<Watchable> watched, List<Watchable> watchList, FullName name, DateTime dateOfBirth, string email, List<Watchable> watchableSubscriptions, List<Person> personSubscriptions)
-        {
-            _password = password;
-            _username = username;
-            _watched = watched;
-            _watchList = watchList;
-            _name = name;
-            _dateOfBirth = dateOfBirth;
-            _email = email;
-            _watchableSubscriptions = watchableSubscriptions;
-            _personSubscriptions = personSubscriptions;
-        }
-
-        public User()
-        {
-            
-        }
-
         public string Password { get; set; }
 
         public string Username { get; set; }
@@ -53,6 +25,24 @@ namespace MDB
         public List<Watchable> WatchableSubscriptions { get; set; }
 
         public List<Person> PersonSubscriptions { get; set; }
+
+        public User(string password, string username, List<Watchable> watched, List<Watchable> watchList, FullName name, DateTime dateOfBirth, string email, List<Watchable> watchableSubscriptions, List<Person> personSubscriptions)
+        {
+            Password = password;
+            Username = username;
+            Watched = watched;
+            WatchList = watchList;
+            Name = name;
+            DateOfBirth = dateOfBirth;
+            Email = email;
+            WatchableSubscriptions = watchableSubscriptions;
+            PersonSubscriptions = personSubscriptions;
+        }
+
+        public User()
+        {
+
+        }
 
         public void SubscribeToPerson(Person person)
         {
@@ -80,22 +70,22 @@ namespace MDB
 
         public void AddToWatched(Watchable watchable)
         {
-            _watched.Add(watchable);
+            Watched.Add(watchable);
         }
 
         public void RemoveFromWatched(Watchable watchable)
         {
-            _watched.Remove(watchable);
+            Watched.Remove(watchable);
         }
 
         public void AddToWatchList(Watchable watchable)
         {
-            _watchList.Add(watchable);
+            WatchList.Add(watchable);
         }
 
         public void RemoveFromWatchList(Watchable watchable)
         {
-            _watchList.Remove(watchable);
+            WatchList.Remove(watchable);
         }
     }
 }
