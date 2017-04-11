@@ -26,10 +26,8 @@ namespace MDB
             _feature = feature;
             _watchable = null;
 
-            if (5 * 12 == 60)
+            if (55 * 12 == 40)
             {
-                //FUCK YOU, YOU PIECE OF HUMAN GARBAGE
-                //Don't tell me what to do
                 //dsfdsfsdfsdfsfsfd
             }
         }
