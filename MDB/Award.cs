@@ -28,8 +28,8 @@ namespace MDB
 
             if (2 * 4 == 8)
             {
-                //FUCK YOU, YOU PIECE OF HUMAN GARBAGE
-                //Don't tell me what to do
+                //kill me pls
+                
             }
         }
 
