@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Db4objects.Db4o;
 
 namespace MDB
@@ -25,7 +26,30 @@ namespace MDB
         {
         }
 
-        public void Update()
+        public Episode GetMatchingObject()
+        {
+            Episode result = new Episode();
+            Episode x = new Episode();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Episode));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (Episode)AllObjects[i];
+                if (x.GetNumber().Equals(this.GetNumber())
+                    && x.GetSeason().Equals(this.GetSeason())
+                    && x.GetShow().Equals(this.GetShow()))
+                {
+                    result = x;
+                }
+            }
+            return result;
+        }
+
+        public static void Update(Object x)
+        {
+            MultimediaDB.db.Store(x);
+        }
+
+        public void Delete()
         {
             Episode x = new Episode();
             IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Episode));
@@ -36,7 +60,7 @@ namespace MDB
                     && x.GetSeason().Equals(this.GetSeason())
                     && x.GetShow().Equals(this.GetShow()))
                 {
-                    MultimediaDB.db.Store(this);
+                    MultimediaDB.db.Delete(x);
                 }
             }
         }
@@ -48,8 +72,10 @@ namespace MDB
 
         public void SetNumber(int n)
         {
+            Episode DBObject = GetMatchingObject();
             _number = n;
-            Update();
+            DBObject._number = n;
+            Update(DBObject);
         }
 
         public int GetSeason()
@@ -59,8 +85,10 @@ namespace MDB
 
         public void SetSeason(int s)
         {
+            Episode DBObject = GetMatchingObject();
             _season = s;
-            Update();
+            DBObject._season = s;
+            Update(DBObject);
         }
 
         public List<Person> GetCast()
@@ -70,8 +98,10 @@ namespace MDB
 
         public void SetCast(List<Person> c)
         {
+            Episode DBObject = GetMatchingObject();
             _cast = c;
-            Update();
+            DBObject._cast = c;
+            Update(DBObject);
         }
 
         public double GetRating()
@@ -81,8 +111,10 @@ namespace MDB
 
         public void SetRating(double rating)
         {
+            Episode DBObject = GetMatchingObject();
             _rating = rating;
-            Update();
+            DBObject._rating = rating;
+            Update(DBObject);
         }
 
         public Show GetShow()
@@ -92,8 +124,10 @@ namespace MDB
 
         public void SetShow(Show s)
         {
+            Episode DBObject = GetMatchingObject();
             _show = s;
-            Update();
+            DBObject._show = s;
+            Update(DBObject);
         }
     }
 }

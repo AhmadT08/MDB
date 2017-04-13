@@ -42,7 +42,28 @@ namespace MDB
 
         }
 
-        public void Update()
+        public Person GetMatchingObject()
+        {
+            Person result = new Person();
+            Person x = new Person();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Person));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (Person)AllObjects[i];
+                if (x.GetName().Equals(this.GetName()))
+                {
+                    result = x;
+                }
+            }
+            return result;
+        }
+
+        public static void Update(Object x)
+        {
+            MultimediaDB.db.Store(x);
+        }
+
+        public void Delete()
         {
             Person x = new Person();
             IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Person));
@@ -51,7 +72,7 @@ namespace MDB
                 x = (Person)AllObjects[i];
                 if (x.GetName().Equals(this.GetName()))
                 {
-                    MultimediaDB.db.Store(this);
+                    MultimediaDB.db.Delete(x);
                 }
             }
         }
@@ -63,8 +84,10 @@ namespace MDB
 
         public void SetAge(int a)
         {
+            Person DBObject = GetMatchingObject();
             _age = a;
-            Update();
+            DBObject._age = a;
+            Update(DBObject);
         }
 
         public int GetHeight()
@@ -74,8 +97,10 @@ namespace MDB
 
         public void SetHeight(int a)
         {
+            Person DBObject = GetMatchingObject();
             _height = a;
-            Update();
+            DBObject._height = a;
+            Update(DBObject);
         }
 
         public List<Award> GetAwardNominations()
@@ -85,8 +110,10 @@ namespace MDB
 
         public void SetAwardNominations(List<Award> nom)
         {
+            Person DBObject = GetMatchingObject();
             _awardNominations = nom;
-            Update();
+            DBObject._awardNominations = nom;
+            Update(DBObject);
         }
 
         public List<Award> GetAwardWins()
@@ -96,8 +123,10 @@ namespace MDB
 
         public void SetAwardWins(List<Award> win)
         {
+            Person DBObject = GetMatchingObject();
             _awardWins = win;
-            Update();
+            DBObject._awardWins = win;
+            Update(DBObject);
         }
 
         public DateTime GetDateOfBirth()
@@ -107,8 +136,10 @@ namespace MDB
 
         public void SetDateOfBirth(DateTime f)
         {
+            Person DBObject = GetMatchingObject();
             _dateOfBirth = f;
-            Update();
+            DBObject._dateOfBirth = f;
+            Update(DBObject);
         }
 
         public string GetEthnicity()
@@ -118,8 +149,10 @@ namespace MDB
 
         public void SetEthnicity(string eth)
         {
+            Person DBObject = GetMatchingObject();
             _ethnicity = eth;
-            Update();
+            DBObject._ethnicity = eth;
+            Update(DBObject);
         }
 
         public string GetNationality()
@@ -129,8 +162,10 @@ namespace MDB
 
         public void SetNationality(string nat)
         {
+            Person DBObject = GetMatchingObject();
             _nationality = nat;
-            Update();
+            DBObject._nationality = nat;
+            Update(DBObject);
         }
 
         public FullName GetName()
@@ -140,8 +175,10 @@ namespace MDB
 
         public void SetName(FullName f)
         {
+            Person DBObject = GetMatchingObject();
             _name = f;
-            Update();
+            DBObject._name = f;
+            Update(DBObject);
         }
 
         public List<Feature> GetFeatures()
@@ -151,8 +188,10 @@ namespace MDB
 
         public void SetFeatures(List<Feature> feat)
         {
+            Person DBObject = GetMatchingObject();
             _features = feat;
-            Update();
+            DBObject._features = feat;
+            Update(DBObject);
         }
 
         public char GetGender()
@@ -162,8 +201,10 @@ namespace MDB
 
         public void SetGender(char f)
         {
+            Person DBObject = GetMatchingObject();
             _gender = f;
-            Update();
+            DBObject._gender = f;
+            Update(DBObject);
         }
 
         public List<User> GetSubscribers()
@@ -173,40 +214,58 @@ namespace MDB
 
         public void SetSubscribers(List<User> subs)
         {
+            Person DBObject = GetMatchingObject();
             _subscribers = subs;
-            Update();
+            DBObject._subscribers = subs;
+            Update(DBObject);
         }
 
         public void AddSubscriber(User sub)
         {
+            Person DBObject = GetMatchingObject();
             _subscribers.Add(sub);
+            DBObject._subscribers.Add(sub);
+            Update(DBObject);
         }
 
         public void RemoveSubscriber(User sub)
         {
+            Person DBObject = GetMatchingObject();
             _subscribers.Remove(sub);
+            DBObject._subscribers.Remove(sub);
+            Update(DBObject);
         }
 
         public void AddFeature(Feature feat)
         {
+            Person DBObject = GetMatchingObject();
             _features.Add(feat);
+            DBObject._features.Add(feat);
+            Update(DBObject);
         }
 
         public void RemoveFeature(Feature feat)
         {
+            Person DBObject = GetMatchingObject();
             _features.Remove(feat);
+            DBObject._features.Remove(feat);
+            Update(DBObject);
         }
 
         public void AddAwardNomination(Award awardNomination)
         {
+            Person DBObject = GetMatchingObject();
             _awardNominations.Add(awardNomination);
-            Update();
+            DBObject._awardNominations.Add(awardNomination);
+            Update(DBObject);
         }
 
         public void AddAwardWin(Award awardWin)
         {
+            Person DBObject = GetMatchingObject();
             _awardWins.Add(awardWin);
-            Update();
+            DBObject._awardWins.Add(awardWin);
+            Update(DBObject);
         }
 
     }

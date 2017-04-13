@@ -13,22 +13,38 @@ namespace MDB
 
         static void Main()
         {
-//            db = Db4oFactory.OpenFile("MDBdraft.yap");
-//            FullName f = new FullName("Ahmad", "Tajuddin");
-//            FullName s = new FullName("Ramy", "Tajuddin");
-//            FullName x = new FullName("Hatem", "Tajuddin");
-//            db.Store(f);
-//            db.Store(s);
-//            db.Store(x);
-//            IObjectSet allstudents = db.QueryByExample(typeof(FullName));
-//            for (int i = 0; i < allstudents.Count; i++)
-//            {
-//                f = (FullName)allstudents[i];
-//                Console.WriteLine(f.FirstName);
-//            }
-                        Application.EnableVisualStyles();
-                        Application.SetCompatibleTextRenderingDefault(false);
-                        Application.Run(new Form1());
+            db = Db4oFactory.OpenFile("MDBdraft1.yap");
+            Movie f = new Movie(new List<Award>(), new List<Award>(), new List<String>(),
+                                new List<Person>(), "18+", "Released", 6.6, new List<User>(), "Scary Movie", new DateTime(1996, 6, 6), 121);
+
+            IObjectSet allstudents = db.QueryByExample(typeof(Movie));
+            for (int i = 0; i < allstudents.Count; i++)
+            {
+                f = (Movie)allstudents[i];
+                Console.WriteLine(i + " " + f.GetRating());
+            }
+            Console.WriteLine("\n");
+            f.SetRating(5.5);
+
+            allstudents = db.QueryByExample(typeof(Movie));
+            for (int i = 0; i < allstudents.Count; i++)
+            {
+                f = (Movie)allstudents[i];
+                Console.WriteLine(i + " " + f.GetRating());
+            }
+            Console.WriteLine("\n");
+
+            f.Delete();
+
+            allstudents = db.QueryByExample(typeof(Award));
+            for (int i = 0; i < allstudents.Count; i++)
+            {
+                f = (Movie)allstudents[i];
+                Console.WriteLine(i + " " + f.GetRating());
+            }
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
         }
     }
 }

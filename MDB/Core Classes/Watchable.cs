@@ -43,7 +43,17 @@ namespace MDB
 
         }
 
-        public void Update()
+        public Watchable GetMatchingObject()
+        {
+            return new Watchable();
+        }
+
+        public static void Update(Object x)
+        {
+
+        }
+
+        public void Delete()
         {
 
         }
@@ -55,8 +65,10 @@ namespace MDB
 
         public void AddAwardNomination(Award awardNomination)
         {
+            Watchable DBObject = GetMatchingObject();
             _awardNominations.Add(awardNomination);
-            Update();
+            DBObject._awardNominations.Add(awardNomination);
+            Update(DBObject);
         }
 
         public List<Award> GetAwardWins()
@@ -66,8 +78,10 @@ namespace MDB
 
         public void AddAwardWin(Award awardWin)
         {
+            Watchable DBObject = GetMatchingObject();
             _awardWins.Add(awardWin);
-            Update();
+            DBObject._awardWins.Add(awardWin);
+            Update(DBObject);
         }
 
         public List<string> GetGenre()
@@ -77,8 +91,10 @@ namespace MDB
 
         public void SetGenre(List<string> genre)
         {
+            Watchable DBObject = GetMatchingObject();
             _genre = genre;
-            Update();
+            DBObject._genre = genre;
+            Update(DBObject);
         }
 
         public List<Person> GetMainCast()
@@ -88,14 +104,18 @@ namespace MDB
 
         public void SetMainCast(List<Person> mainCast)
         {
+            Watchable DBObject = GetMatchingObject();
             _mainCast = mainCast;
-            Update();
+            DBObject._mainCast = mainCast;
+            Update(DBObject);
         }
 
         public void AddToMainCast(Person cast)
         {
+            Watchable DBObject = GetMatchingObject();
             _mainCast.Add(cast);
-            Update();
+            DBObject._mainCast.Add(cast);
+            Update(DBObject);
         }
 
         public string GetMpaaRating()
@@ -105,8 +125,10 @@ namespace MDB
 
         public void SetMpaaRating(string mpaaRating)
         {
+            Watchable DBObject = GetMatchingObject();
             _mpaaRating = mpaaRating;
-            Update();
+            DBObject._mpaaRating = mpaaRating;
+            Update(DBObject);
         }
 
         public string GetProductionStatus()
@@ -116,8 +138,10 @@ namespace MDB
 
         public void SetProductionStatus(string productionStatus)
         {
+            Watchable DBObject = GetMatchingObject();
             _productionStatus = productionStatus;
-            Update();
+            DBObject._productionStatus = productionStatus;
+            Update(DBObject);
         }
 
         public double GetRating()
@@ -127,8 +151,10 @@ namespace MDB
 
         public void SetRating(double rating)
         {
+            Watchable DBObject = GetMatchingObject();
             _rating = rating;
-            Update();
+            DBObject._rating = rating;
+            Update(DBObject);
         }
 
         public List<User> GetSubscribers()
@@ -138,20 +164,26 @@ namespace MDB
 
         public void SetSubscribers(List<User> subscribers)
         {
+            Watchable DBObject = GetMatchingObject();
             _subscribers = subscribers;
-            Update();
+            DBObject._subscribers = subscribers;
+            Update(DBObject);
         }
 
         public void AddSubscriber(User sub)
         {
+            Watchable DBObject = GetMatchingObject();
             _subscribers.Add(sub);
-            Update();
+            DBObject._subscribers.Add(sub);
+            Update(DBObject);
         }
 
         public void RemoveSubscriber(User sub)
         {
+            Watchable DBObject = GetMatchingObject();
             _subscribers.Remove(sub);
-            Update();
+            DBObject._subscribers.Remove(sub);
+            Update(DBObject);
         }
 
         public string GetTitleName()
@@ -161,8 +193,10 @@ namespace MDB
 
         public void SetTitleName(string titleName)
         {
+            Watchable DBObject = GetMatchingObject();
             _titleName = titleName;
-            Update();
+            DBObject._titleName = titleName;
+            Update(DBObject);
         }
 
     }

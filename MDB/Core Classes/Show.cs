@@ -31,7 +31,28 @@ namespace MDB
 
         }
 
-        public new void Update()
+        public Show GetMatchingObject()
+        {
+            Show result = new Show();
+            Show x = new Show();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Show));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (Show)AllObjects[i];
+                if (x.GetTitleName().Equals(GetTitleName()))
+                {
+                    result = x;
+                }
+            }
+            return result;
+        }
+
+        public new static void Update(Object x)
+        {
+            MultimediaDB.db.Store(x);
+        }
+
+        public void Delete()
         {
             Show x = new Show();
             IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Show));
@@ -40,14 +61,17 @@ namespace MDB
                 x = (Show)AllObjects[i];
                 if (x.GetTitleName().Equals(GetTitleName()))
                 {
-                    MultimediaDB.db.Store(this);
+                    MultimediaDB.db.Delete(x);
                 }
             }
         }
 
         public void AddEpisode(Episode episode)
         {
+            Show DBObject = GetMatchingObject();
             _episodeList.Add(episode);
+            DBObject._episodeList.Add(episode);
+            Update(DBObject);
         }
 
         public DateTime getPilotDate()
@@ -57,7 +81,10 @@ namespace MDB
 
         public void setPilotDate(DateTime date)
         {
+            Show DBObject = GetMatchingObject();
             _pilotDate = date;
+            DBObject._pilotDate = date;
+            Update(DBObject);
         }
 
         public int getNumberOfEpisodes()
@@ -67,7 +94,10 @@ namespace MDB
 
         public void setNumberOfEpisodes(int ep)
         {
+            Show DBObject = GetMatchingObject();
             _numberOfEpisodes = ep;
+            DBObject._numberOfEpisodes = ep;
+            Update(DBObject);
         }
 
         public int getSeasons()
@@ -77,7 +107,10 @@ namespace MDB
 
         public void setSeasons(int s)
         {
+            Show DBObject = GetMatchingObject();
             _seasons = s;
+            DBObject._seasons = s;
+            Update(DBObject);
         }
     }
 

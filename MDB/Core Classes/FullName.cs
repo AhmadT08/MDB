@@ -24,7 +24,28 @@ namespace MDB
 
         }
 
-        public void Update()
+        public FullName GetMatchingObject()
+        {
+            FullName result = new FullName();
+            FullName x = new FullName();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(FullName));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (FullName)AllObjects[i];
+                if (x.GetFirstName().Equals(this.GetFirstName()) && x.GetLastName().Equals(this.GetLastName()))
+                {
+                    result = x;
+                }
+            }
+            return result;
+        }
+
+        public static void Update(Object x)
+        {
+            MultimediaDB.db.Store(x);
+        }
+
+        public void Delete()
         {
             FullName x = new FullName();
             IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(FullName));
@@ -33,7 +54,7 @@ namespace MDB
                 x = (FullName)AllObjects[i];
                 if (x.GetFirstName().Equals(this.GetFirstName()) && x.GetLastName().Equals(this.GetLastName()))
                 {
-                    MultimediaDB.db.Store(this);
+                    MultimediaDB.db.Delete(x);
                 }
             }
         }
@@ -45,8 +66,10 @@ namespace MDB
 
         public void SetFirstName(string name)
         {
+            FullName DBObject = GetMatchingObject();
             _firstName = name;
-            Update();
+            DBObject._firstName = name;
+            Update(DBObject);
         }
 
         public string GetLastName()
@@ -56,8 +79,10 @@ namespace MDB
 
         public void SetLastName(string name)
         {
+            FullName DBObject = GetMatchingObject();
             _lastName = name;
-            Update();
+            DBObject._lastName = name;
+            Update(DBObject);
         }
     }
 }

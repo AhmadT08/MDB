@@ -29,7 +29,28 @@ namespace MDB
 
         }
 
-        public new void Update()
+        public new Movie GetMatchingObject()
+        {
+            Movie result = new Movie();
+            Movie x = new Movie();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Movie));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (Movie)AllObjects[i];
+                if (x.GetTitleName().Equals(GetTitleName()))
+                {
+                    result = x;
+                }
+            }
+            return result;
+        }
+
+        public new static void Update(Object x)
+        {
+            MultimediaDB.db.Store(x);
+        }
+
+        public new void Delete()
         {
             Movie x = new Movie();
             IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Movie));
@@ -38,7 +59,7 @@ namespace MDB
                 x = (Movie)AllObjects[i];
                 if (x.GetTitleName().Equals(GetTitleName()))
                 {
-                    MultimediaDB.db.Store(this);
+                    MultimediaDB.db.Delete(x);
                 }
             }
         }
@@ -50,8 +71,10 @@ namespace MDB
 
         public void SetReleaseDate(DateTime release)
         {
+            Movie DBObject = GetMatchingObject();
             _releaseDate = release;
-            Update();
+            DBObject._releaseDate = release;
+            Update(DBObject);
         }
 
         public int GetRunTime()
@@ -61,8 +84,10 @@ namespace MDB
 
         public void SetRunTime(int run)
         {
+            Movie DBObject = GetMatchingObject();
             _runTime = run;
-            Update();
+            DBObject._runTime = run;
+            Update(DBObject);
         }
     }
 }

@@ -47,7 +47,45 @@ namespace MDB
 
         }
 
-        public void DeleteMatchingObject()
+        public Award GetMatchingObject()
+        {
+            Award result = new Award();
+            Award x = new Award();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Award));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (Award)AllObjects[i];
+
+                if (this.GetWatchable() == null)
+                {
+                    if (x.GetYear().Equals(this.GetYear())
+                        && x.GetCategory().Equals(this.GetCategory())
+                        && x.GetFeature().Equals(this.GetFeature())
+                        && x.GetWin().Equals(this.GetWin()))
+                    {
+                        result = x;
+                    }
+                }
+                else
+                {
+                    if (x.GetYear().Equals(this.GetYear())
+                        && x.GetCategory().Equals(this.GetCategory())
+                        && x.GetWatchable().Equals(this.GetWatchable())
+                        && x.GetWin().Equals(this.GetWin()))
+                    {
+                        result = x;
+                    }
+                }
+            }
+            return result;
+        }
+
+        public static void Update(Object x)
+        {
+            MultimediaDB.db.Store(x);
+        }
+
+        public void Delete()
         {
             Award x = new Award();
             IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Award));
@@ -78,11 +116,6 @@ namespace MDB
             }
         }
 
-        public void Update()
-        {
-            MultimediaDB.db.Store(this);
-        }
-
         public int GetYear()
         {
             return _year;
@@ -90,9 +123,10 @@ namespace MDB
 
         public void SetYear(int y)
         {
-//            DeleteMatchingObject();
+            Award DBObject = GetMatchingObject();
             _year = y;
-            Update();
+            DBObject._year = y;
+            Update(DBObject);
         }
 
         public string GetCategory()
@@ -102,8 +136,10 @@ namespace MDB
 
         public void SetCategory(string c)
         {
+            Award DBObject = GetMatchingObject();
             _category = c;
-            Update();
+            DBObject._category = c;
+            Update(DBObject);
         }
 
         public string GetTitle()
@@ -113,8 +149,10 @@ namespace MDB
 
         public void SetTitle(string t)
         {
+            Award DBObject = GetMatchingObject();
             _title = t;
-            Update();
+            DBObject._title = t;
+            Update(DBObject);
         }
 
         public bool GetWin()
@@ -124,8 +162,10 @@ namespace MDB
 
         public void SetWin(bool w)
         {
+            Award DBObject = GetMatchingObject();
             _win = w;
-            Update();
+            DBObject._win = w;
+            Update(DBObject);
         }
 
         public bool GetNomination()
@@ -135,8 +175,10 @@ namespace MDB
 
         public void GetNomination(bool n)
         {
+            Award DBObject = GetMatchingObject();
             _nomination = n;
-            Update();
+            DBObject._nomination = n;
+            Update(DBObject);
         }
 
         public Feature GetFeature()
@@ -146,8 +188,10 @@ namespace MDB
 
         public void SetFeature(Feature f)
         {
+            Award DBObject = GetMatchingObject();
             _feature = f;
-            Update();
+            DBObject._feature = f;
+            Update(DBObject);
         }
 
         public Watchable GetWatchable()
@@ -157,8 +201,10 @@ namespace MDB
 
         public void SetWatchable(Watchable w)
         {
+            Award DBObject = GetMatchingObject();
             _watchable = w;
-            Update();
+            DBObject._watchable = w;
+            Update(DBObject);
         }
     }
 }

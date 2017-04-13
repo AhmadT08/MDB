@@ -28,7 +28,30 @@ namespace MDB
 
         }
 
-        public void Update()
+        public Feature GetMatchingObject()
+        {
+            Feature result = new Feature();
+            Feature x = new Feature();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Feature));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (Feature)AllObjects[i];
+                if (x.GetActingRole().Equals(this.GetActingRole())
+                    && x.GetEntity().Equals(this.GetEntity())
+                    && x.GetPerson().Equals(this.GetPerson()))
+                {
+                    result = x;
+                }
+            }
+            return result;
+        }
+
+        public static void Update(Object x)
+        {
+            MultimediaDB.db.Store(x);
+        }
+
+        public void Delete()
         {
             Feature x = new Feature();
             IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Feature));
@@ -39,7 +62,7 @@ namespace MDB
                     && x.GetEntity().Equals(this.GetEntity())
                     && x.GetPerson().Equals(this.GetPerson()))
                 {
-                    MultimediaDB.db.Store(this);
+                    MultimediaDB.db.Delete(x);
                 }
             }
         }
@@ -51,8 +74,10 @@ namespace MDB
 
         public void SetActingRole(string role)
         {
+            Feature DBObject = GetMatchingObject();
             _actingRole = role;
-            Update();
+            DBObject._actingRole = role;
+            Update(DBObject);
         }
 
         public string GetProductionRole()
@@ -62,8 +87,10 @@ namespace MDB
 
         public void SetProductionRole(string role)
         {
+            Feature DBObject = GetMatchingObject();
             _productionRole = role;
-            Update();
+            DBObject._productionRole = role;
+            Update(DBObject);
         }
 
         public Watchable GetEntity()
@@ -73,8 +100,10 @@ namespace MDB
 
         public void SetEntity(Watchable en)
         {
+            Feature DBObject = GetMatchingObject();
             _entity = en;
-            Update();
+            DBObject._entity = en;
+            Update(DBObject);
         }
 
         public Person GetPerson()
@@ -84,8 +113,10 @@ namespace MDB
 
         public void SetPerson(Person p)
         {
+            Feature DBObject = GetMatchingObject();
             _person = p;
-            Update();
+            DBObject._person = p;
+            Update(DBObject);
         }
     }
 }
