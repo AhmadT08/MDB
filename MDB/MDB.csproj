@@ -55,34 +55,34 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cecil.FlowAnalysis">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Cecil.FlowAnalysis.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Cecil.FlowAnalysis.dll</HintPath>
     </Reference>
     <Reference Include="Db4oBench">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4oBench.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4oBench.dll</HintPath>
     </Reference>
     <Reference Include="Db4objects.Db4o">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4objects.Db4o.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4objects.Db4o.dll</HintPath>
     </Reference>
     <Reference Include="Db4objects.Db4o.Instrumentation">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4objects.Db4o.Instrumentation.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4objects.Db4o.Instrumentation.dll</HintPath>
     </Reference>
     <Reference Include="Db4objects.Db4o.NativeQueries">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4objects.Db4o.NativeQueries.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4objects.Db4o.NativeQueries.dll</HintPath>
     </Reference>
     <Reference Include="Db4oTool">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4oTool.exe</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4oTool.exe</HintPath>
     </Reference>
     <Reference Include="Db4oTool.MSBuild">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4oTool.MSBuild.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4oTool.MSBuild.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Mono.Cecil.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Pdb">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Mono.Cecil.Pdb.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Mono.Cecil.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.GetOptions">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Mono.GetOptions.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Mono.GetOptions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
