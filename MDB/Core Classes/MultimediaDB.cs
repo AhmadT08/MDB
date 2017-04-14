@@ -4,44 +4,39 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Db4objects.Db4o;
+using System.Drawing;
+using MDB.GUI;
 
 namespace MDB
 {
     static class MultimediaDB
     {
         public static IObjectContainer db;
-
+        [STAThread]
         static void Main()
         {
-            db = Db4oFactory.OpenFile("MDBdraft1.yap");
-            Movie f = new Movie(new List<Award>(), new List<Award>(), new List<String>(),
-                                new List<Person>(), "18+", "Released", 6.6, new List<User>(), "Scary Movie", new DateTime(1996, 6, 6), 121);
+            db = Db4oFactory.OpenFile("MDBdraft.yap");
+            //try
+            //{
+            //    Movie f = new Movie(new List<Award>(), new List<Award>(), new List<String>(),
+            //                        new List<Person>(), "18+", "IN A WORLD", "Released", 6.6, new List<User>(), "Scary Movie", Image.FromFile(@"..\..\..\Posters\her.jpg"), new DateTime(1996, 6, 6), 121);
+            //    Movie a = new Movie(new List<Award>(), new List<Award>(), new List<String>(),
+            //                        new List<Person>(), "13+", "WHERE WE FORGET TO ADD A SYNOPSIS", "Released", 8.6, new List<User>(), "Alien", Image.FromFile(@"..\..\..\Posters\her.jpg"), new DateTime(1979, 6, 6), 123);
+            //}
+            //catch
+            //{
 
-            IObjectSet allstudents = db.QueryByExample(typeof(Movie));
-            for (int i = 0; i < allstudents.Count; i++)
-            {
-                f = (Movie)allstudents[i];
-                Console.WriteLine(i + " " + f.GetRating());
-            }
-            Console.WriteLine("\n");
-            f.SetRating(5.5);
+            //}
+            //Movie movieClass = new Movie();
 
-            allstudents = db.QueryByExample(typeof(Movie));
-            for (int i = 0; i < allstudents.Count; i++)
-            {
-                f = (Movie)allstudents[i];
-                Console.WriteLine(i + " " + f.GetRating());
-            }
-            Console.WriteLine("\n");
+            //IObjectSet movie = db.QueryByExample(typeof(Movie));
+            //while (movie.HasNext())
+            //{
+            //    movieClass = (Movie)movie.Next();
+            //    Image lo = (Image)movieClass.getPoster();
+            //    Console.WriteLine(lo);
+            //}
 
-            f.Delete();
-
-            allstudents = db.QueryByExample(typeof(Award));
-            for (int i = 0; i < allstudents.Count; i++)
-            {
-                f = (Movie)allstudents[i];
-                Console.WriteLine(i + " " + f.GetRating());
-            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

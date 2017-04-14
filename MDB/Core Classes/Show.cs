@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Db4objects.Db4o;
+using System.Drawing;
 
 namespace MDB
 {
@@ -15,9 +16,9 @@ namespace MDB
         private List<Episode> _episodeList;
 
         public Show(List<Award> awardNominations, List<Award> awardWins, List<string> genre, List<Person> mainCast,
-                     string mpaaRating, string productionStatus, double rating, List<User> subscribers, string titleName,
+                     string mpaaRating, string synopsis, string productionStatus, double rating, List<User> subscribers, string titleName, Image poster,
                      int seasons, int numberOfEpisodes, DateTime pilotDate, List<Episode> episodeList) : base(awardNominations,
-                         awardWins, genre, mainCast, mpaaRating, productionStatus, rating, subscribers, titleName)
+                         awardWins, genre, mainCast, mpaaRating, synopsis, productionStatus, rating, subscribers, titleName, poster)
         {
             _seasons = seasons;
             _numberOfEpisodes = numberOfEpisodes;
@@ -31,7 +32,7 @@ namespace MDB
 
         }
 
-        public Show GetMatchingObject()
+        public new Show GetMatchingObject()
         {
             Show result = new Show();
             Show x = new Show();
@@ -52,7 +53,7 @@ namespace MDB
             MultimediaDB.db.Store(x);
         }
 
-        public void Delete()
+        public new void Delete()
         {
             Show x = new Show();
             IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Show));
