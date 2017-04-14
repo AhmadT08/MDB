@@ -25,8 +25,13 @@ namespace MDB.GUI
         private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
             RegisterUser r = new RegisterUser();
-            r.ShowDialog();
-            this.Close();
+            r.Show();
+            this.Hide();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
