@@ -27,24 +27,14 @@ namespace MDB
             //{
 
             //}
-            //Movie movieClass = new Movie();
+            Movie movieClass = new Movie();
 
-<<<<<<< HEAD
             IObjectSet movie = MDB.MultimediaDB.db.QueryByExample(typeof(Movie));
             while (movie.HasNext())
             {
                 movieClass = (Movie)movie.Next();
                 Console.WriteLine(movieClass.GetAwardWins()[0].GetTitle());
             }
-=======
-            //IObjectSet movie = db.QueryByExample(typeof(Movie));
-            //while (movie.HasNext())
-            //{
-            //    movieClass = (Movie)movie.Next();
-            //    Image lo = (Image)movieClass.getPoster();
-            //    Console.WriteLine(lo);
-            //}
->>>>>>> parent of bf7e2d5... Finished 'addMovie' and move DB file position
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
