@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
-using Db4objects.Db4o;
 
 namespace MDB.GUI
 {
@@ -59,6 +58,7 @@ namespace MDB.GUI
             Movie newMovie = new Movie(nominated, won, genre, person,
                 MPAA, synopsis, production, rating, new List<User>(), title, posterImage, released, time);
 
+<<<<<<< HEAD
             //Adding 'Watchable' and 'Person' back into 'Feature'
             for (int i = 0; i < newMovie.GetMainCast().Count; i++)
             {
@@ -77,6 +77,8 @@ namespace MDB.GUI
                 newMovie.GetAwardWins()[j].SetWatchable(newMovie);
             }
 
+=======
+>>>>>>> parent of bf7e2d5... Finished 'addMovie' and move DB file position
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
