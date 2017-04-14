@@ -15,7 +15,7 @@ namespace MDB
         [STAThread]
         static void Main()
         {
-            db = Db4oFactory.OpenFile("MDBdraft.yap");
+            db = Db4oFactory.OpenFile("../../MDBdraft.yap");
             //try
             //{
             //    Movie f = new Movie(new List<Award>(), new List<Award>(), new List<String>(),
@@ -27,15 +27,14 @@ namespace MDB
             //{
 
             //}
-            //Movie movieClass = new Movie();
+            Movie movieClass = new Movie();
 
-            //IObjectSet movie = db.QueryByExample(typeof(Movie));
-            //while (movie.HasNext())
-            //{
-            //    movieClass = (Movie)movie.Next();
-            //    Image lo = (Image)movieClass.getPoster();
-            //    Console.WriteLine(lo);
-            //}
+            IObjectSet movie = MDB.MultimediaDB.db.QueryByExample(typeof(Movie));
+            while (movie.HasNext())
+            {
+                movieClass = (Movie)movie.Next();
+                Console.WriteLine(movieClass.GetMainCast()[0].GetFeatures()[0].GetEntity().GetTitleName());
+            }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
