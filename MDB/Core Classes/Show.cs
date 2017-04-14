@@ -32,7 +32,7 @@ namespace MDB
 
         }
 
-        public Show GetMatchingObject()
+        public new Show GetMatchingObject()
         {
             Show result = new Show();
             Show x = new Show();
@@ -53,7 +53,7 @@ namespace MDB
             MultimediaDB.db.Store(x);
         }
 
-        public void Delete()
+        public new void Delete()
         {
             Show x = new Show();
             IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Show));

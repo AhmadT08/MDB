@@ -15,8 +15,9 @@ namespace MDB.GUI
     {
         ArrayList allAwards = new ArrayList();
         public static List<String> castNames = new List<String>();
-        public static List<Person> mainCast = new List<Person>();
+        public static ArrayList mainCast = new ArrayList();
         Boolean won;
+        Image posterImage;
         public addMovie()
         {
             InitializeComponent();
@@ -34,18 +35,25 @@ namespace MDB.GUI
             if (this.openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 pictureBox1.ImageLocation = this.openFileDialog1.FileName;
+                posterImage = new Bitmap(this.openFileDialog1.FileName);
             }
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Person getPerson = new Person();
-            //List<String> o = this.checkedListBox1.CheckedItems.OfType<String>().ToList();
-            //Movie f = new Movie(new List<Award>(), new List<Award>(), new List<String>(),
-            //                    new List<Person>(), "18+", "IN A WORLD", "Released", 6.6, new List<User>(),
-            //                    "Scary Movie", Image.FromFile(@"..\..\..\Posters\her.jpg"),
-            //                    new DateTime(1996, 6, 6), 121);
+            List<String> genre = this.checkedListBox1.CheckedItems.OfType<String>().ToList();
+            List<Person> person = mainCast.Cast<Person>().ToList();
+            String MPAA = this.comboBox1.Text;
+            String synopsis = this.richTextBox1.Text;
+            String production = this.comboBox2.Text;
+            int rating = Convert.ToInt32(this.textBox2.Text);
+            String title = this.textBox1.Text;
+            DateTime released = this.dateTimePicker1.Value.Date;
+            int time = Convert.ToInt32(this.textBox3.Text);
+            Movie newMovie = new Movie(new List<Award>(), new List<Award>(), genre, person,
+                MPAA, synopsis, production, rating, new List<User>(), title, posterImage, released, time);
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

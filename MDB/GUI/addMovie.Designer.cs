@@ -189,6 +189,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(190, 31);
             this.comboBox2.TabIndex = 14;
+            this.comboBox2.Text = "Announced";
             // 
             // label6
             // 
@@ -268,6 +269,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 31);
             this.comboBox1.TabIndex = 8;
+            this.comboBox1.Text = "G";
             // 
             // label3
             // 

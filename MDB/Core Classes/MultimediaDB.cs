@@ -39,7 +39,7 @@ namespace MDB
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new addMovie());
+            Application.Run(new Form1());
         }
     }
 }

@@ -21,7 +21,6 @@ namespace MDB
         public static IObjectContainer db;
         public Form1()
         {
-            db = Db4oFactory.OpenFile("MDBdraft.yap");
             InitializeComponent();
             initalizeMovies();
         }
@@ -68,7 +67,7 @@ namespace MDB
         public void initalizeMovies()
         {
             Movie movieClass = new Movie();
-            IObjectSet movie = db.QueryByExample(typeof(Movie));
+            IObjectSet movie = MDB.MultimediaDB.db.QueryByExample(typeof(Movie));
             while (movie.HasNext())
             {
                 movieClass = (Movie)movie.Next();

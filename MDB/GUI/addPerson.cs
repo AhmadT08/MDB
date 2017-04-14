@@ -37,6 +37,7 @@ namespace MDB.GUI
             string nationality = this.textBox7.Text;
             newPerson = new Person(age, new List<Award>(), new List<Award>(), DOB,
                 ethnicity, new List<Feature>(), fullName, gender, height, nationality, new List<User>());
+            addMovie.mainCast.Add(newPerson);
         }
 
         private void button1_Click(object sender, EventArgs e)
