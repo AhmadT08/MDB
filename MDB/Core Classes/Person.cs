@@ -9,6 +9,7 @@ namespace MDB
 {
     class Person
     {
+        private int _ID = 0;
         private int _age;
         private List<Award> _awardNominations;
         private List<Award> _awardWins;
@@ -23,6 +24,7 @@ namespace MDB
 
         public Person(int age, List<Award> awardNominations, List<Award> awardWins, DateTime dateOfBirth, string ethnicity, List<Feature> features, FullName name, char gender, int height, string nationality, List<User> subscribers)
         {
+            _ID = ++_ID;
             _age = age;
             _awardNominations = awardNominations;
             _awardWins = awardWins;

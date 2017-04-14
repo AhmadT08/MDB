@@ -15,6 +15,7 @@ namespace MDB
 {
     class Watchable
     {
+        private int _ID = 0;
         private List<Award> _awardNominations;
         private List<Award> _awardWins;
         private List<string> _genre;
@@ -31,6 +32,7 @@ namespace MDB
                          List<Person> mainCast, string mpaaRating, string synopsis, string productionStatus, double rating,
                          List<User> subscribers, string titleName, Image poster)
         {
+            _ID = ++_ID;
             _awardNominations = awardNominations;
             _awardWins = awardWins;
             _genre = genre;
@@ -62,6 +64,11 @@ namespace MDB
         public void Delete()
         {
 
+        }
+
+        public int getID()
+        {
+            return _ID;
         }
 
         public List<Award> GetAwardNominations()

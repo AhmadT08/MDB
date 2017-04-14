@@ -54,6 +54,7 @@ namespace MDB.GUI
             newPerson = new Person(age, new List<Award>(), new List<Award>(), DOB,
             ethnicity, allFeatures, fullName, gender, height, nationality, new List<User>());
             addMovie.mainCast.Add(newPerson);
+
         }
 
         private void button1_Click(object sender, EventArgs e)
