@@ -16,9 +16,9 @@ namespace MDB
         private List<Episode> _episodeList;
 
         public Show(List<Award> awardNominations, List<Award> awardWins, List<string> genre, List<Person> mainCast,
-                     string mpaaRating, string productionStatus, double rating, List<User> subscribers, string titleName, Image poster,
+                     string mpaaRating, string synopsis, string productionStatus, double rating, List<User> subscribers, string titleName, Image poster,
                      int seasons, int numberOfEpisodes, DateTime pilotDate, List<Episode> episodeList) : base(awardNominations,
-                         awardWins, genre, mainCast, mpaaRating, productionStatus, rating, subscribers, titleName, poster)
+                         awardWins, genre, mainCast, mpaaRating, synopsis, productionStatus, rating, subscribers, titleName, poster)
         {
             _seasons = seasons;
             _numberOfEpisodes = numberOfEpisodes;

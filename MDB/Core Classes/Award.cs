@@ -18,25 +18,25 @@ namespace MDB
         private Feature _feature;
         private Watchable _watchable;
 
-        public Award(int year, string category, string title, bool win, bool nomination, Feature feature)
+        public Award(int year, string category, string title, bool win, Feature feature)
         {
             _year = year;
             _category = category;
             _title = title;
             _win = win;
-            _nomination = nomination;
+            //_nomination = nomination;
             _feature = feature;
             _watchable = null;
             MultimediaDB.db.Store(this);
         }
 
-        public Award(int year, string category, string title, bool win, bool nomination, Watchable watchable)
+        public Award(int year, string category, string title, bool win, Watchable watchable)
         {
             _year = year;
             _category = category;
             _title = title;
             _win = win;
-            _nomination = nomination;
+            //_nomination = nomination;
             _watchable = watchable;
             _feature = null;
             MultimediaDB.db.Store(this);
@@ -168,18 +168,18 @@ namespace MDB
             Update(DBObject);
         }
 
-        public bool GetNomination()
-        {
-            return _nomination;
-        }
+        //public bool GetNomination()
+        //{
+        //    return _nomination;
+        //}
 
-        public void GetNomination(bool n)
-        {
-            Award DBObject = GetMatchingObject();
-            _nomination = n;
-            DBObject._nomination = n;
-            Update(DBObject);
-        }
+        //public void GetNomination(bool n)
+        //{
+        //    Award DBObject = GetMatchingObject();
+        //    _nomination = n;
+        //    DBObject._nomination = n;
+        //    Update(DBObject);
+        //}
 
         public Feature GetFeature()
         {

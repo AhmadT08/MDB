@@ -20,6 +20,7 @@ namespace MDB
         private List<string> _genre;
         private List<Person> _mainCast;
         private string _mpaaRating;
+        private string _synopsis;
         private string _productionStatus;
         private double _rating;
         private List<User> _subscribers;
@@ -27,7 +28,7 @@ namespace MDB
         private byte[] _poster;
 
         public Watchable(List<Award> awardNominations, List<Award> awardWins, List<string> genre,
-                         List<Person> mainCast, string mpaaRating, string productionStatus, double rating,
+                         List<Person> mainCast, string mpaaRating, string synopsis, string productionStatus, double rating,
                          List<User> subscribers, string titleName, Image poster)
         {
             _awardNominations = awardNominations;
@@ -35,6 +36,7 @@ namespace MDB
             _genre = genre;
             _mainCast = mainCast;
             _mpaaRating = mpaaRating;
+            _synopsis = synopsis;
             _productionStatus = productionStatus;
             _rating = rating;
             _subscribers = subscribers;
@@ -132,6 +134,19 @@ namespace MDB
             Watchable DBObject = GetMatchingObject();
             _mpaaRating = mpaaRating;
             DBObject._mpaaRating = mpaaRating;
+            Update(DBObject);
+        }
+
+        public string GetSynopsis()
+        {
+            return _synopsis;
+        }
+
+        public void SetSynopsis(string synopsis)
+        {
+            Watchable DBObject = GetMatchingObject();
+            _synopsis = synopsis;
+            DBObject._synopsis = synopsis;
             Update(DBObject);
         }
 

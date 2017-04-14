@@ -16,9 +16,9 @@ namespace MDB
         private int _runTime;
 
         public Movie(List<Award> awardNominations, List<Award> awardWins, List<string> genre,
-                         List<Person> mainCast, string mpaaRating, string productionStatus, double rating,
+                         List<Person> mainCast, string mpaaRating, string synopsis, string productionStatus, double rating,
                          List<User> subscribers, string titleName, Image poster, DateTime release, int time) : base(awardNominations,
-                         awardWins, genre, mainCast, mpaaRating, productionStatus, rating, subscribers, titleName, poster)
+                         awardWins, genre, mainCast, mpaaRating, synopsis, productionStatus, rating, subscribers, titleName, poster)
         {
             _releaseDate = release;
             _runTime = time;
