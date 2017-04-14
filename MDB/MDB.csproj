@@ -128,6 +128,12 @@
     <Compile Include="Core Classes\FullName.cs" />
     <Compile Include="Core Classes\Person.cs" />
     <Compile Include="Core Classes\MultimediaDB.cs" />
+    <Compile Include="GUI\ShowMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ShowMovie.Designer.cs">
+      <DependentUpon>ShowMovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ShowMovie.resx">
+      <DependentUpon>ShowMovie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
