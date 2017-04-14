@@ -23,8 +23,8 @@ namespace MDB.GUI
             User u = new User(textBox4.Text, textBox4.Text, new List<Watchable>(), new List<Watchable>(), fname, dateTimePicker1.Value.Date,textBox5.Text,new List<Watchable>(),new List<Person>());
             User.Update(u);
             Login l = new Login();
-            l.ShowDialog();
-            this.Dispose();
+            l.Show();
+            this.Hide();
         }
 
         private void label6_Click(object sender, EventArgs e)
