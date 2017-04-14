@@ -8,6 +8,8 @@ using System.Reflection;
 using System.Runtime.Remoting;
 using Cecil.FlowAnalysis.CodeStructure;
 using Db4objects.Db4o;
+using System.IO;
+using System.Drawing;
 
 namespace MDB
 {
@@ -22,10 +24,11 @@ namespace MDB
         private double _rating;
         private List<User> _subscribers;
         private string _titleName;
+        private byte[] _poster;
 
         public Watchable(List<Award> awardNominations, List<Award> awardWins, List<string> genre,
                          List<Person> mainCast, string mpaaRating, string productionStatus, double rating,
-                         List<User> subscribers, string titleName)
+                         List<User> subscribers, string titleName, Image poster)
         {
             _awardNominations = awardNominations;
             _awardWins = awardWins;
@@ -36,6 +39,7 @@ namespace MDB
             _rating = rating;
             _subscribers = subscribers;
             _titleName = titleName;
+            _poster = imageToByteArray(poster);
         }
 
         public Watchable()
@@ -197,6 +201,33 @@ namespace MDB
             _titleName = titleName;
             DBObject._titleName = titleName;
             Update(DBObject);
+        }
+
+        public void setPoster(Image poster)
+        {
+            Watchable DBObject = GetMatchingObject();
+            _poster = imageToByteArray(poster);
+            DBObject._poster = imageToByteArray(poster);
+            Update(DBObject);
+        }
+
+        public Image getPoster()
+        {
+            return byteArrayToImage(_poster);
+        }
+
+        public byte[] imageToByteArray(Image imageIn)
+        {
+            MemoryStream ms = new MemoryStream();
+            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            return ms.ToArray();
+        }
+
+        public Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
         }
 
     }

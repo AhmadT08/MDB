@@ -6,6 +6,7 @@ using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 using Db4objects.Db4o;
+using System.Drawing;
 
 namespace MDB
 {
@@ -16,8 +17,8 @@ namespace MDB
 
         public Movie(List<Award> awardNominations, List<Award> awardWins, List<string> genre,
                          List<Person> mainCast, string mpaaRating, string productionStatus, double rating,
-                         List<User> subscribers, string titleName, DateTime release, int time) : base(awardNominations,
-                         awardWins, genre, mainCast, mpaaRating, productionStatus, rating, subscribers, titleName)
+                         List<User> subscribers, string titleName, Image poster, DateTime release, int time) : base(awardNominations,
+                         awardWins, genre, mainCast, mpaaRating, productionStatus, rating, subscribers, titleName, poster)
         {
             _releaseDate = release;
             _runTime = time;
