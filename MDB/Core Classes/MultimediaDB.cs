@@ -33,12 +33,12 @@ namespace MDB
             while (movie.HasNext())
             {
                 movieClass = (Movie)movie.Next();
-                Console.WriteLine(movieClass.GetMainCast()[0].GetFeatures()[0].GetEntity().GetTitleName());
+                Console.WriteLine(movieClass.GetMainCast()[0].GetFeatures()[0].GetEntity().getID());
             }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new addMovie());
         }
     }
 }

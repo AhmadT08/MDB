@@ -16,6 +16,8 @@ namespace MDB.GUI
     {
         ArrayList allAwards = new ArrayList();
         public static List<String> castNames = new List<String>();
+        public static ArrayList wonAward = new ArrayList();
+        public static ArrayList nomAward = new ArrayList();
         public static ArrayList mainCast = new ArrayList();
         Boolean won;
         Image posterImage;
@@ -33,26 +35,28 @@ namespace MDB.GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (this.openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                pictureBox1.ImageLocation = this.openFileDialog1.FileName;
-                posterImage = new Bitmap(this.openFileDialog1.FileName);
+                pictureBox1.ImageLocation = openFileDialog1.FileName;
+                posterImage = new Bitmap(openFileDialog1.FileName);
             }
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            List<String> genre = this.checkedListBox1.CheckedItems.OfType<String>().ToList();
+            List<String> genre = checkedListBox1.CheckedItems.OfType<String>().ToList();
             List<Person> person = mainCast.Cast<Person>().ToList();
-            String MPAA = this.comboBox1.Text;
-            String synopsis = this.richTextBox1.Text;
-            String production = this.comboBox2.Text;
-            int rating = Convert.ToInt32(this.textBox2.Text);
-            String title = this.textBox1.Text;
-            DateTime released = this.dateTimePicker1.Value.Date;
-            int time = Convert.ToInt32(this.textBox3.Text);
-            Movie newMovie = new Movie(new List<Award>(), new List<Award>(), genre, person,
+            List<Award> nominated = nomAward.Cast<Award>().ToList();
+            List<Award> won = wonAward.Cast<Award>().ToList();
+            String MPAA = comboBox1.Text;
+            String synopsis = richTextBox1.Text;
+            String production = comboBox2.Text;
+            int rating = Convert.ToInt32(textBox2.Text);
+            String title = textBox1.Text;
+            DateTime released = dateTimePicker1.Value.Date;
+            int time = Convert.ToInt32(textBox3.Text);
+            Movie newMovie = new Movie(nominated, won, genre, person,
                 MPAA, synopsis, production, rating, new List<User>(), title, posterImage, released, time);
 
             //Adding 'Watchable' and 'Person' back into 'Feature'
@@ -63,11 +67,27 @@ namespace MDB.GUI
                 op[op.Count - 1].SetPerson(newMovie.GetMainCast()[i]);
             }
 
+            //Adding 'Watchable' to AwardNominations and AwardWins
+            for (int j = 0; j < newMovie.GetAwardNominations().Count; j++)
+            {
+                newMovie.GetAwardNominations()[j].SetWatchable(newMovie);
+            }
+            for (int j = 0; j < newMovie.GetAwardWins().Count; j++)
+            {
+                newMovie.GetAwardWins()[j].SetWatchable(newMovie);
+            }
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            addAward newPerson = new addAward();
+            newPerson.ShowDialog();
         }
     }
 }
