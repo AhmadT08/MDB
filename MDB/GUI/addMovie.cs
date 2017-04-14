@@ -15,7 +15,7 @@ namespace MDB.GUI
     {
         ArrayList allAwards = new ArrayList();
         public static List<String> castNames = new List<String>();
-        public static List<Person> mainCast = new List<Person>();
+        public static ArrayList mainCast = new ArrayList();
         Boolean won;
         public addMovie()
         {
@@ -40,7 +40,7 @@ namespace MDB.GUI
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Person getPerson = new Person();
+            Console.WriteLine(mainCast[0]);
             //List<String> o = this.checkedListBox1.CheckedItems.OfType<String>().ToList();
             //Movie f = new Movie(new List<Award>(), new List<Award>(), new List<String>(),
             //                    new List<Person>(), "18+", "IN A WORLD", "Released", 6.6, new List<User>(),
