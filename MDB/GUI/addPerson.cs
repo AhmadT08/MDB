@@ -14,6 +14,8 @@ namespace MDB.GUI
     {
         Person newPerson;
         static List<Person> allpeopke;
+        String acting;
+        String production;
         public addPerson()
         {
             InitializeComponent();
@@ -35,8 +37,22 @@ namespace MDB.GUI
             char gender = this.comboBox1.Text.ToArray()[0];
             int height = Convert.ToInt32(this.textBox6.Text);
             string nationality = this.textBox7.Text;
+            List<Feature> allFeatures = new List<Feature>();
+            if (this.comboBox2.Text == "Acting")
+            {
+                acting = this.textBox2.Text;
+                production = "none";
+            }
+            else if (this.comboBox2.Text == "Production")
+            {
+                acting = "none";
+                production = this.textBox2.Text;
+            }
+            Feature feature = new Feature(acting, new Watchable(), new Person(), production);
+            allFeatures.Add(feature);
+
             newPerson = new Person(age, new List<Award>(), new List<Award>(), DOB,
-                ethnicity, new List<Feature>(), fullName, gender, height, nationality, new List<User>());
+            ethnicity, allFeatures, fullName, gender, height, nationality, new List<User>());
             addMovie.mainCast.Add(newPerson);
         }
 
