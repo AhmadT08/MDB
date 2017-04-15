@@ -41,28 +41,32 @@ namespace MDB.GUI
             {
                 ad.Show();
                 this.Hide();
+                MultimediaDB.sessionUsername = "admin";
+
             }
             IObjectSet users = MDB.MultimediaDB.db.QueryByExample(typeof(User));
-            
-            for (int i = 0; i < users.Count; i++)
+
+            while (users.HasNext())
             {
-                u = (User)users[i];
-              
-                 if (u.GetUsername() == textBox1.Text && u.GetPassword() == textBox2.Text)
+                u = (User)users.Next();
+
+                if (u.GetUsername() == textBox1.Text && u.GetPassword() == textBox2.Text)
                 {
-                f.Show();
-                this.Hide();
+                    f.Show();
+                    this.Hide();
+                    MultimediaDB.sessionUser = u;
+                    MultimediaDB.sessionUsername = u.GetUsername();
                 }
                 else
                 {
-                Console.WriteLine("Wrong Username or Password");
+                    Console.WriteLine("Wrong Username or Password");
+                }
             }
-        }
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-           
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

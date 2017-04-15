@@ -16,6 +16,16 @@ namespace MDB.GUI
             InitializeComponent();
             _ID = ID;
             _Watchabletype = type;
+            if (MultimediaDB.sessionUsername == "admin")
+            {
+                adminControl.Visible = true;
+                userControls.Visible = false;
+            }
+            else
+            {
+                adminControl.Visible = false;
+                userControls.Visible = true;
+            }
             initializeData();
         }
 
@@ -156,6 +166,11 @@ namespace MDB.GUI
                 MultimediaDB.sessionUser.RemoveFromWatched(m);
                 button2.Text = "Not Watched";
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
