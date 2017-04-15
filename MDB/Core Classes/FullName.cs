@@ -32,7 +32,7 @@ namespace MDB
             for (int i = 0; i < AllObjects.Count; i++)
             {
                 x = (FullName)AllObjects[i];
-                if (x.GetFirstName().Equals(this.GetFirstName()) && x.GetLastName().Equals(this.GetLastName()))
+                if (x.GetFirstName().Equals(GetFirstName()) && x.GetLastName().Equals(GetLastName()))
                 {
                     result = x;
                 }
@@ -40,7 +40,7 @@ namespace MDB
             return result;
         }
 
-        public static void Update(Object x)
+        public static void Update(object x)
         {
             MultimediaDB.db.Store(x);
         }
@@ -52,7 +52,7 @@ namespace MDB
             for (int i = 0; i < AllObjects.Count; i++)
             {
                 x = (FullName)AllObjects[i];
-                if (x.GetFirstName().Equals(this.GetFirstName()) && x.GetLastName().Equals(this.GetLastName()))
+                if (x.GetFirstName().Equals(GetFirstName()) && x.GetLastName().Equals(GetLastName()))
                 {
                     MultimediaDB.db.Delete(x);
                 }

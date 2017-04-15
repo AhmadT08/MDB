@@ -38,7 +38,7 @@ namespace MDB
             for (int i = 0; i < AllObjects.Count; i++)
             {
                 x = (Movie)AllObjects[i];
-                if (x.GetTitleName().Equals(GetTitleName()))
+                if (x.GetID().Equals(GetID()))
                 {
                     result = x;
                 }
@@ -46,7 +46,7 @@ namespace MDB
             return result;
         }
 
-        public new static void Update(Object x)
+        public new static void Update(object x)
         {
             MultimediaDB.db.Store(x);
         }
@@ -63,6 +63,59 @@ namespace MDB
                     MultimediaDB.db.Delete(x);
                 }
             }
+        }
+
+        public static Movie GetMovieByID(int ID)
+        {
+            Movie result = new Movie();
+
+            Movie x = new Movie();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Movie));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (Movie)AllObjects[i];
+                if (x.GetID().Equals(ID))
+                {
+                    result = x;
+                }
+            }
+
+            return result;
+        }
+
+        public static Movie GetMovieByTitle(string title)
+        {
+            Movie result = new Movie();
+
+            Movie x = new Movie();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Movie));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (Movie)AllObjects[i];
+                if (x.GetTitleName().Equals(title))
+                {
+                    result = x;
+                }
+            }
+
+            return result;
+        }
+
+        public static bool Exists(string title)
+        {
+            bool result = false;
+            Movie x = new Movie();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Movie));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (Movie)AllObjects[i];
+                if (x.GetTitleName().Equals(title))
+                {
+                    result = true;
+                }
+            }
+
+            return result;
         }
 
         public DateTime GetReleaseDate()

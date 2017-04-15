@@ -106,6 +106,12 @@
     <Compile Include="GUI\addAward.Designer.cs">
       <DependentUpon>addAward.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\addEpisode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\addEpisode.Designer.cs">
+      <DependentUpon>addEpisode.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\addMovie.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,13 @@
     <Compile Include="GUI\addPerson.Designer.cs">
       <DependentUpon>addPerson.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\addShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\addShow.Designer.cs">
+      <DependentUpon>addShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\addWatchable.cs" />
     <Compile Include="GUI\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,11 +153,17 @@
     <EmbeddedResource Include="GUI\addAward.resx">
       <DependentUpon>addAward.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\addEpisode.resx">
+      <DependentUpon>addEpisode.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\addMovie.resx">
       <DependentUpon>addMovie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\addPerson.resx">
       <DependentUpon>addPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\addShow.resx">
+      <DependentUpon>addShow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

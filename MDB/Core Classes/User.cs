@@ -54,7 +54,7 @@ namespace MDB
             return result;
         }
 
-        public static void Update(Object x)
+        public static void Update(object x)
         {
             MultimediaDB.db.Store(x);
         }
