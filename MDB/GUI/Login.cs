@@ -27,7 +27,7 @@ namespace MDB.GUI
         {
             RegisterUser r = new RegisterUser();
             r.Show();
-            Hide();
+            this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,15 +36,14 @@ namespace MDB.GUI
             String password = textBox2.Text;
             User u = new User();
             Form1 f = new Form1();
-            addMovie ad = new addMovie();
             if (textBox1.Text.Equals("admin") && textBox2.Text.Equals("admin"))
             {
-                ad.Show();
-                Hide();
+                f.Show();
+                this.Hide();
                 MultimediaDB.sessionUsername = "admin";
 
             }
-            IObjectSet users = MultimediaDB.db.QueryByExample(typeof(User));
+            IObjectSet users = MDB.MultimediaDB.db.QueryByExample(typeof(User));
 
             while (users.HasNext())
             {
@@ -53,7 +52,7 @@ namespace MDB.GUI
                 if (u.GetUsername() == textBox1.Text && u.GetPassword() == textBox2.Text)
                 {
                     f.Show();
-                    Hide();
+                    this.Hide();
                     MultimediaDB.sessionUser = u;
                     MultimediaDB.sessionUsername = u.GetUsername();
                 }
