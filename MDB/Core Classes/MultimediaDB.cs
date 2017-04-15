@@ -32,7 +32,7 @@ namespace MDB
             while (movie.HasNext())
             {
                 movieClass = (Movie)movie.Next();
-                Console.WriteLine(movieClass.GetAwardWins()[0].GetTitle());
+                Console.WriteLine(movieClass.GetTitleName());
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
