@@ -42,8 +42,7 @@ namespace MDB.GUI
                 }
                 label5.Text = watchable.GetRating() + "%";
                 richTextBox1.Text = watchable.GetSynopsis();
-                //                Console.WriteLine(MultimediaDB.sessionUser.GetWatchableSubscriptions().Count);
-                //                List<Watchable> x = MultimediaDB.sessionUser.GetWatchableSubscriptions();
+
                 if (MultimediaDB.sessionUser.GetWatchableSubscriptions().Contains(watchable))
                 {
                     button3.Text = "Unsubscribe";
@@ -118,16 +117,21 @@ namespace MDB.GUI
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-            FullName ana = new FullName("Ahmed", "hisham");
-            DateTime dateOfBirth = new DateTime();
-            List<User> us = new List<User>();
-            User u = new User("qweewq", "TOMNAZ1", new List<Watchable>(), new List<Watchable>(), ana, dateOfBirth, "boss_tomna@hotmail.com", new List<Watchable>(), new List<Person>());
-            us.Add(u);
-            //u.SetWatchableSubscriptions(new List<Watchable>());
-            MDB.Movie m = MDB.Movie.GetMovieByTitle("Birdman");
-
-            MultimediaDB.sessionUser.SubscribeToWatchable(m);
+            MDB.Movie m = MDB.Movie.GetMovieByID(_ID);
+            if (MultimediaDB.sessionUser.GetWatchableSubscriptions().Contains(m))
+            {
+                MultimediaDB.sessionUser.UnsubscribeToWatchable(m);
+                Console.WriteLine(MultimediaDB.sessionUser.GetWatchableSubscriptions().Count);
+                MessageBox.Show("Successfully unsubscribed to " + m.GetTitleName());
+                button3.Text = "Subscribe";
+            }
+            else
+            {
+                MultimediaDB.sessionUser.SubscribeToWatchable(m);
+                Console.WriteLine(MultimediaDB.sessionUser.GetWatchableSubscriptions().Count);
+                MessageBox.Show("Successfully subscribed to " + m.GetTitleName());
+                button3.Text = "Unsubscribe";
+            }
 
         }
     }
