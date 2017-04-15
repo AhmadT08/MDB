@@ -314,6 +314,8 @@ namespace MDB
             //            _features.Add(feat);
             DBObject._features.Add(feat);
             MultimediaDB.db.Store(DBObject._features);
+            Notify(_name.GetFirstName() + " " + _name.GetLastName() + " features in "
+                + feat.GetEntity().GetTitleName() + " for the role of " + feat.GetActingRole());
         }
 
         public void RemoveFeature(Feature feat)
@@ -330,6 +332,9 @@ namespace MDB
             //            _awardNominations.Add(awardNomination);
             DBObject._awardNominations.Add(awardNomination);
             MultimediaDB.db.Store(DBObject._awardNominations);
+            Notify(_name.GetFirstName() + " " + _name.GetLastName() + " has been nominated for "
+                + awardNomination.GetTitle() + " " + awardNomination.GetCategory() + " for the role of "
+                + awardNomination.GetFeature().GetActingRole() + " in " + awardNomination.GetFeature().GetEntity().GetTitleName());
         }
 
         public void AddAwardWin(Award awardWin)
@@ -338,7 +343,14 @@ namespace MDB
             //            _awardWins.Add(awardWin);
             DBObject._awardWins.Add(awardWin);
             MultimediaDB.db.Store(DBObject._awardWins);
+            Notify(_name.GetFirstName() + " " + _name.GetLastName() + " has won "
+                + awardWin.GetTitle() + " " + awardWin.GetCategory() + " for the role of "
+                + awardWin.GetFeature().GetActingRole() + " in " + awardWin.GetFeature().GetEntity().GetTitleName());
         }
 
+        public void Notify(String notification)
+        {
+            _subscribers.ForEach(x => x.UpdateObservers(notification));
+        }
     }
 }

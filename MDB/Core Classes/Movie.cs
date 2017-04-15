@@ -129,6 +129,7 @@ namespace MDB
             _releaseDate = release;
             DBObject._releaseDate = release;
             Update(DBObject);
+            Notify(GetTitleName() + " release date has been set to " + release);
         }
 
         public int GetRunTime()

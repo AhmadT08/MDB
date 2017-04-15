@@ -82,6 +82,8 @@ namespace MDB
             //            _awardNominations.Add(awardNomination);
             DBObject._awardNominations.Add(awardNomination);
             MultimediaDB.db.Store(DBObject._awardNominations);
+            Notify(_titleName + " " + " has been nominated for "
+                   + awardNomination.GetTitle() + " " + awardNomination.GetCategory());
         }
 
         public List<Award> GetAwardWins()
@@ -95,6 +97,8 @@ namespace MDB
             //            _awardWins.Add(awardWin);
             DBObject._awardWins.Add(awardWin);
             MultimediaDB.db.Store(DBObject._awardWins);
+            Notify(_titleName + " " + " has won "
+                   + awardWin.GetTitle() + " " + awardWin.GetCategory());
         }
 
         public List<string> GetGenre()
@@ -168,6 +172,7 @@ namespace MDB
             _productionStatus = productionStatus;
             DBObject._productionStatus = productionStatus;
             Update(DBObject);
+            Notify(_titleName + " production status has been set to " + productionStatus);
         }
 
         public double GetRating()
@@ -181,6 +186,7 @@ namespace MDB
             _rating = rating;
             DBObject._rating = rating;
             Update(DBObject);
+            Notify(_titleName + " has been given a rating of " + rating);
         }
 
         public List<User> GetSubscribers()
@@ -203,9 +209,10 @@ namespace MDB
             DBObject._subscribers.Add(sub);
             MultimediaDB.db.Store(DBObject._subscribers);
         }
-        public void Notify()
+
+        public void Notify(String notification)
         {
-            _subscribers.ForEach(x => x.UpdateObservers());
+            _subscribers.ForEach(x => x.UpdateObservers(notification));
         }
 
         public void RemoveSubscriber(User sub)
@@ -254,16 +261,6 @@ namespace MDB
             MemoryStream ms = new MemoryStream(byteArrayIn);
             Image returnImage = Image.FromStream(ms);
             return returnImage;
-        }
-
-        public void Subscribe(User observer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Unsubscribe(User observer)
-        {
-            throw new NotImplementedException();
         }
     }
 }
