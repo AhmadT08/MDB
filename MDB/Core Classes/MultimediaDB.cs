@@ -23,7 +23,7 @@ namespace MDB
         static void Main()
         {
             db = Db4oFactory.OpenFile("../../MDBdraft.yap");
-            sessionUsername = "admin";
+            sessionUsername = "wrostom";
             //            sessionUser = User.GetUserByUsername("TOMNAZ1");
             //                        IObjectSet AllUsers = db.QueryByExample(typeof(User));
             //                        while (AllUsers.HasNext())

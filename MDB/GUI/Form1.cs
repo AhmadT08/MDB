@@ -97,7 +97,7 @@ namespace MDB
         {
             PictureBox op = (PictureBox)sender;
             String[] lo = op.Name.Split('-');
-//            Console.WriteLine(lo[0] + "-" + lo[1]);
+            //            Console.WriteLine(lo[0] + "-" + lo[1]);
             ShowMovie showMovie = new ShowMovie(Convert.ToInt32(lo[1]), lo[0]);
             showMovie.ShowDialog();
         }
@@ -171,6 +171,12 @@ namespace MDB
         {
             addShow showWindow = new addShow();
             showWindow.ShowDialog();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Notification notify = new Notification();
+            notify.ShowDialog();
         }
     }
 }
