@@ -20,7 +20,10 @@ namespace MDB
             _entity = entity;
             _person = person;
             _productionRole = productionRole;
-            MultimediaDB.db.Store(this);
+            if (!Exists(_person, _entity))
+            {
+                MultimediaDB.db.Store(this);
+            }
         }
 
         public Feature()
@@ -36,9 +39,9 @@ namespace MDB
             for (int i = 0; i < AllObjects.Count; i++)
             {
                 x = (Feature)AllObjects[i];
-                if (x.GetActingRole().Equals(this.GetActingRole())
-                    && x.GetEntity().Equals(this.GetEntity())
-                    && x.GetPerson().Equals(this.GetPerson()))
+                if (x.GetActingRole().Equals(GetActingRole())
+                    && x.GetEntity().Equals(GetEntity())
+                    && x.GetPerson().Equals(GetPerson()))
                 {
                     result = x;
                 }
@@ -46,7 +49,7 @@ namespace MDB
             return result;
         }
 
-        public static void Update(Object x)
+        public static void Update(object x)
         {
             MultimediaDB.db.Store(x);
         }
@@ -58,13 +61,30 @@ namespace MDB
             for (int i = 0; i < AllObjects.Count; i++)
             {
                 x = (Feature)AllObjects[i];
-                if (x.GetActingRole().Equals(this.GetActingRole())
-                    && x.GetEntity().Equals(this.GetEntity())
-                    && x.GetPerson().Equals(this.GetPerson()))
+                if (x.GetActingRole().Equals(GetActingRole())
+                    && x.GetEntity().Equals(GetEntity())
+                    && x.GetPerson().Equals(GetPerson()))
                 {
                     MultimediaDB.db.Delete(x);
                 }
             }
+        }
+
+        public static bool Exists(Person person, Watchable entity)
+        {
+            bool result = false;
+            Feature x = new Feature();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Feature));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (Feature)AllObjects[i];
+                if (x.GetEntity().Equals(entity)
+                    && x.GetPerson().Equals(person))
+                {
+                    result = true;
+                }
+            }
+            return result;
         }
 
         public string GetActingRole()

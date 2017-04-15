@@ -55,22 +55,22 @@ namespace MDB
             {
                 x = (Award)AllObjects[i];
 
-                if (this.GetWatchable() == null)
+                if (GetWatchable() == null)
                 {
-                    if (x.GetYear().Equals(this.GetYear())
-                        && x.GetCategory().Equals(this.GetCategory())
-                        && x.GetFeature().Equals(this.GetFeature())
-                        && x.GetWin().Equals(this.GetWin()))
+                    if (x.GetYear().Equals(GetYear())
+                        && x.GetCategory().Equals(GetCategory())
+                        && x.GetFeature().Equals(GetFeature())
+                        && x.GetWin().Equals(GetWin()))
                     {
                         result = x;
                     }
                 }
                 else
                 {
-                    if (x.GetYear().Equals(this.GetYear())
-                        && x.GetCategory().Equals(this.GetCategory())
-                        && x.GetWatchable().Equals(this.GetWatchable())
-                        && x.GetWin().Equals(this.GetWin()))
+                    if (x.GetYear().Equals(GetYear())
+                        && x.GetCategory().Equals(GetCategory())
+                        && x.GetWatchable().Equals(GetWatchable())
+                        && x.GetWin().Equals(GetWin()))
                     {
                         result = x;
                     }
@@ -79,7 +79,7 @@ namespace MDB
             return result;
         }
 
-        public static void Update(Object x)
+        public static void Update(object x)
         {
             MultimediaDB.db.Store(x);
         }
@@ -92,22 +92,22 @@ namespace MDB
             {
                 x = (Award)AllObjects[i];
 
-                if (this.GetWatchable() == null)
+                if (GetWatchable() == null)
                 {
-                    if (x.GetYear().Equals(this.GetYear())
-                        && x.GetCategory().Equals(this.GetCategory())
-                        && x.GetFeature().Equals(this.GetFeature())
-                        && x.GetWin().Equals(this.GetWin()))
+                    if (x.GetYear().Equals(GetYear())
+                        && x.GetCategory().Equals(GetCategory())
+                        && x.GetFeature().Equals(GetFeature())
+                        && x.GetWin().Equals(GetWin()))
                     {
                         MultimediaDB.db.Delete(x);
                     }
                 }
                 else
                 {
-                    if (x.GetYear().Equals(this.GetYear())
-                        && x.GetCategory().Equals(this.GetCategory())
-                        && x.GetWatchable().Equals(this.GetWatchable())
-                        && x.GetWin().Equals(this.GetWin()))
+                    if (x.GetYear().Equals(GetYear())
+                        && x.GetCategory().Equals(GetCategory())
+                        && x.GetWatchable().Equals(GetWatchable())
+                        && x.GetWin().Equals(GetWin()))
                     {
                         MultimediaDB.db.Delete(x);
                     }

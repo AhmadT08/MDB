@@ -1,27 +1,26 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Collections;
 using Db4objects.Db4o;
 
 namespace MDB.GUI
 {
-    public partial class addMovie : Form, addWatchable
+    public partial class addShow : Form, addWatchable
     {
         //        ArrayList allAwards = new ArrayList();
-        //        public List<String> castNames = new List<String>();
-        public static ArrayList wonAward;
-        public static ArrayList nomAward;
-        public ArrayList mainCast = new ArrayList();
+        //        public static List<String> castNames = new List<String>();
+        public static ArrayList mainCast = new ArrayList();
         Image posterImage;
 
-        public addMovie()
+        public addShow()
         {
             InitializeComponent();
         }
@@ -45,7 +44,6 @@ namespace MDB.GUI
                 pictureBox1.ImageLocation = openFileDialog1.FileName;
                 posterImage = new Bitmap(openFileDialog1.FileName);
             }
-
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -57,64 +55,61 @@ namespace MDB.GUI
             string production = comboBox2.Text;
             int rating = Convert.ToInt32(textBox2.Text);
             string title = textBox1.Text;
-            DateTime released = dateTimePicker1.Value.Date;
-            int time = Convert.ToInt32(textBox3.Text);
-
-            if (!Movie.Exists(title))
+            DateTime pilot = dateTimePicker1.Value.Date;
+            int seasons = Convert.ToInt32(textBox3.Text);
+            if (!MDB.Show.Exists(textBox1.Text))
             {
-                Movie newMovie = new Movie(new List<Award>(), new List<Award>(), genre, person,
-                MPAA, synopsis, production, rating, new List<User>(), title, posterImage, released, time);
-                MessageBox.Show(@"Movie successfully added");
-
+                Show newShow = new Show(new List<Award>(), new List<Award>(), genre, person,
+                    MPAA, synopsis, production, rating, new List<User>(), title, posterImage, seasons, 0, pilot,
+                    new List<Episode>());
+                MessageBox.Show(@"Show successfully added");
                 //Adding 'Watchable' and 'Person' back into 'Feature'
-                for (int i = 0; i < newMovie.GetMainCast().Count; i++)
+                for (int i = 0; i < newShow.GetMainCast().Count; i++)
                 {
-                    List<Feature> op = newMovie.GetMainCast()[i].GetFeatures();
-                    op[op.Count - 1].SetEntity(newMovie);
-                    op[op.Count - 1].SetPerson(newMovie.GetMainCast()[i]);
+                    List<Feature> op = newShow.GetMainCast()[i].GetFeatures();
+                    op[op.Count - 1].SetEntity(newShow);
+                    op[op.Count - 1].SetPerson(newShow.GetMainCast()[i]);
                 }
             }
             else
             {
-                Movie newMovie = Movie.GetMovieByTitle(title);
-                newMovie.SetGenre(genre);
-                newMovie.SetMainCast(person);
-                newMovie.SetMpaaRating(MPAA);
-                newMovie.SetSynopsis(synopsis);
-                newMovie.SetProductionStatus(production);
-                newMovie.SetRating(rating);
-                newMovie.SetReleaseDate(released);
-                newMovie.SetRunTime(time);
-                newMovie.setPoster(posterImage);
+                Show newShow = MDB.Show.GetShowByTitle(title);
+                newShow.SetGenre(genre);
+                newShow.SetMainCast(person);
+                newShow.SetMpaaRating(MPAA);
+                newShow.SetSynopsis(synopsis);
+                newShow.SetProductionStatus(production);
+                newShow.SetRating(rating);
+                newShow.SetPilotDate(pilot);
+                newShow.SetSeasons(seasons);
+                newShow.setPoster(posterImage);
 
-                MessageBox.Show(@"Movie successfully edited");
+                MessageBox.Show(@"Show successfully edited");
                 //Adding 'Watchable' and 'Person' back into 'Feature'
-                for (int i = 0; i < newMovie.GetMainCast().Count; i++)
+                for (int i = 0; i < newShow.GetMainCast().Count; i++)
                 {
-                    List<Feature> op = newMovie.GetMainCast()[i].GetFeatures();
-                    op[op.Count - 1].SetEntity(newMovie);
-                    op[op.Count - 1].SetPerson(newMovie.GetMainCast()[i]);
+                    List<Feature> op = newShow.GetMainCast()[i].GetFeatures();
+                    op[op.Count - 1].SetEntity(newShow);
+                    op[op.Count - 1].SetPerson(newShow.GetMainCast()[i]);
                 }
             }
-
-
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            Movie x = new Movie();
+            Show x = new Show();
             string title = textBox1.Text;
-            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Movie));
-            if (!Movie.Exists(textBox1.Text))
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Show));
+            if (!MDB.Show.Exists(textBox1.Text))
             {
-                MessageBox.Show(@"Movie does not exist in the database");
+                MessageBox.Show(@"Show does not exist in the database");
                 ClearAll();
             }
             else
             {
                 for (int i = 0; i < AllObjects.Count; i++)
                 {
-                    x = (Movie)AllObjects[i];
+                    x = (Show)AllObjects[i];
                     if (x.GetTitleName().Equals(title))
                     {
                         Lookup(x);
@@ -123,18 +118,18 @@ namespace MDB.GUI
             }
         }
 
-        private void CheckBoxLookup(Movie movie)
+        private void CheckBoxLookup(Show show)
         {
             for (int j = 0; j < checkedListBox1.Items.Count; j++) //clears check box
             {
                 checkedListBox1.SetItemChecked(j, false);
             }
 
-            for (int i = 0; i < movie.GetGenre().Count; i++)
+            for (int i = 0; i < show.GetGenre().Count; i++)
             {
                 for (int j = 0; j < checkedListBox1.Items.Count; j++)
                 {
-                    if (movie.GetGenre()[i].Equals(checkedListBox1.Items[j].ToString()))
+                    if (show.GetGenre()[i].Equals(checkedListBox1.Items[j].ToString()))
                     {
                         checkedListBox1.SetItemChecked(j, true); //check matching genre
                     }
@@ -142,28 +137,18 @@ namespace MDB.GUI
             }
         }
 
-        private void FillCastNames(Movie movie)
+        private void FillCastNames(Show show)
         {
             listBox1.Items.Clear();
-            for (int i = 0; i < movie.GetMainCast().Count; i++)
+            for (int i = 0; i < show.GetMainCast().Count; i++)
             {
-                listBox1.Items.Add(movie.GetMainCast()[i].GetName().GetFirstName() + " " +
-                                   movie.GetMainCast()[i].GetName().GetLastName());
+                listBox1.Items.Add(show.GetMainCast()[i].GetName().GetFirstName() + " " +
+                                   show.GetMainCast()[i].GetName().GetLastName());
             }
         }
 
-        private void Lookup(Movie x)
+        private void Lookup(Show x)
         {
-            //            List<String> genre = checkedListBox1.CheckedItems.OfType<String>().ToList();
-            //            List<Person> person = mainCast.Cast<Person>().ToList();
-            //            String MPAA = comboBox1.Text;
-            //            String synopsis = richTextBox1.Text;
-            //            String production = comboBox2.Text;
-            //            int rating = Convert.ToInt32(textBox2.Text);
-            //            String title = textBox1.Text;
-            //            DateTime released = dateTimePicker1.Value.Date;
-            //            int time = Convert.ToInt32(textBox3.Text);
-
             CheckBoxLookup(x);
             FillCastNames(x);
             comboBox1.Text = x.GetMpaaRating();
@@ -171,8 +156,8 @@ namespace MDB.GUI
             comboBox2.Text = x.GetProductionStatus();
             textBox2.Text = x.GetRating().ToString();
             textBox1.Text = x.GetTitleName();
-            dateTimePicker1.Value = x.GetReleaseDate();
-            textBox3.Text = x.GetRunTime().ToString();
+            dateTimePicker1.Value = x.GetPilotDate();
+            textBox3.Text = x.GetSeasons().ToString();
             posterImage = pictureBox1.Image = x.getPoster();
         }
 
@@ -190,6 +175,19 @@ namespace MDB.GUI
             textBox1.Text = "";
             dateTimePicker1.Value = DateTime.Now;
             textBox3.Text = "";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (!MDB.Show.Exists(textBox1.Text))
+            {
+                MessageBox.Show(@"Show does not exist in the database");
+            }
+            else
+            {
+                addEpisode ep = new addEpisode(MDB.Show.GetShowByTitle(textBox1.Text).GetID(), listBox1.Items);
+                ep.ShowDialog();
+            }
         }
     }
 }
