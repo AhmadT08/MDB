@@ -36,10 +36,9 @@ namespace MDB.GUI
             String password = textBox2.Text;
             User u = new User();
             Form1 f = new Form1();
-            addMovie ad = new addMovie();
             if (textBox1.Text.Equals("admin") && textBox2.Text.Equals("admin"))
             {
-                ad.Show();
+                f.Show();
                 this.Hide();
                 MultimediaDB.sessionUsername = "admin";
 
