@@ -25,14 +25,14 @@ namespace MDB
             initalizeMovies();
         }
 
-        private void createPictureBoxandTitle(MDB.Movie mov)
+        private void createPictureBoxandTitle(Movie mov)
         {
-            picturebox = new System.Windows.Forms.PictureBox();
-            picturebox.Location = new System.Drawing.Point(picturePosition, 0);
-            picturebox.MaximumSize = new System.Drawing.Size(145, 215);
+            picturebox = new PictureBox();
+            picturebox.Location = new Point(picturePosition, 0);
+            picturebox.MaximumSize = new Size(145, 215);
             picturebox.Name = "pictureBox" + pictureBoxCounter;
-            picturebox.Size = new System.Drawing.Size(145, 215);
-            picturebox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            picturebox.Size = new Size(145, 215);
+            picturebox.SizeMode = PictureBoxSizeMode.StretchImage;
             picturebox.TabIndex = pictureBoxCounter;
             try
             {
@@ -44,21 +44,21 @@ namespace MDB
             }
             picturebox.TabStop = false;
 
-            movieLabel = new System.Windows.Forms.Label();
+            movieLabel = new Label();
             movieLabel.AutoSize = true;
-            movieLabel.Font = new System.Drawing.Font("Gill Sans MT", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            movieLabel.ForeColor = System.Drawing.Color.White;
-            movieLabel.Location = new System.Drawing.Point(titlePosition, 218);
-            movieLabel.MaximumSize = new System.Drawing.Size(145, 0);
-            movieLabel.MinimumSize = new System.Drawing.Size(145, 0);
+            movieLabel.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            movieLabel.ForeColor = Color.White;
+            movieLabel.Location = new Point(titlePosition, 218);
+            movieLabel.MaximumSize = new Size(145, 0);
+            movieLabel.MinimumSize = new Size(145, 0);
             movieLabel.Name = "mLabel" + pictureBoxCounter;
-            movieLabel.Size = new System.Drawing.Size(145, 23);
+            movieLabel.Size = new Size(145, 23);
             movieLabel.TabIndex = 1;
             movieLabel.Text = mov.GetTitleName();
-            movieLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            movieLabel.TextAlign = ContentAlignment.TopCenter;
 
-            this.panel14.Controls.Add(picturebox);
-            this.panel14.Controls.Add(movieLabel);
+            panel14.Controls.Add(picturebox);
+            panel14.Controls.Add(movieLabel);
             pictureBoxCounter++;
             picturePosition += 156;
             titlePosition += 152;
@@ -67,7 +67,7 @@ namespace MDB
         public void initalizeMovies()
         {
             Movie movieClass = new Movie();
-            IObjectSet movie = MDB.MultimediaDB.db.QueryByExample(typeof(Movie));
+            IObjectSet movie = MultimediaDB.db.QueryByExample(typeof(Movie));
             while (movie.HasNext())
             {
                 movieClass = (Movie)movie.Next();

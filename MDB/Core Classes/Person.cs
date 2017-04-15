@@ -9,7 +9,7 @@ namespace MDB
 {
     class Person
     {
-        private int _ID = 0;
+        private readonly int _ID;
         private int _age;
         private List<Award> _awardNominations;
         private List<Award> _awardWins;
@@ -24,7 +24,7 @@ namespace MDB
 
         public Person(int age, List<Award> awardNominations, List<Award> awardWins, DateTime dateOfBirth, string ethnicity, List<Feature> features, FullName name, char gender, int height, string nationality, List<User> subscribers)
         {
-            _ID = ++_ID;
+            _ID = MultimediaDB.db.QueryByExample(typeof(Person)).Count + 1;
             _age = age;
             _awardNominations = awardNominations;
             _awardWins = awardWins;
@@ -36,7 +36,11 @@ namespace MDB
             _height = height;
             _nationality = nationality;
             _subscribers = subscribers;
-            MultimediaDB.db.Store(this);
+
+            if (!Exists(_name, _age))
+            {
+                MultimediaDB.db.Store(this);
+            }
         }
 
         public Person()
@@ -52,7 +56,7 @@ namespace MDB
             for (int i = 0; i < AllObjects.Count; i++)
             {
                 x = (Person)AllObjects[i];
-                if (x.GetName().Equals(this.GetName()))
+                if (x.GetName().Equals(GetName()))
                 {
                     result = x;
                 }
@@ -60,7 +64,7 @@ namespace MDB
             return result;
         }
 
-        public static void Update(Object x)
+        public static void Update(object x)
         {
             MultimediaDB.db.Store(x);
         }
@@ -72,11 +76,77 @@ namespace MDB
             for (int i = 0; i < AllObjects.Count; i++)
             {
                 x = (Person)AllObjects[i];
-                if (x.GetName().Equals(this.GetName()))
+                if (x.GetID().Equals(GetID()))
                 {
                     MultimediaDB.db.Delete(x);
                 }
             }
+        }
+
+        public static Person GetPersonByID(int ID)
+        {
+            Person result = new Person();
+
+            Person x = new Person();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Person));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (Person)AllObjects[i];
+                if (x.GetID().Equals(ID))
+                {
+                    result = x;
+                }
+            }
+            return result;
+        }
+
+        public static Person GetPersonByNameAge(FullName name, int age)
+        {
+            Person result = new Person();
+            Person x = new Person();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Person));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (Person)AllObjects[i];
+                if (x.GetName().GetFirstName().Equals(name.GetFirstName()) &&
+                    x.GetName().GetLastName().Equals(name.GetLastName()) &&
+                    x.GetAge().Equals(age))
+                {
+                    result = x;
+                }
+            }
+            return result;
+        }
+
+        public static bool Exists(FullName name, int age)
+        {
+            bool result = false;
+            Person x = new Person();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Person));
+
+            try
+            {
+                for (int i = 0; i < AllObjects.Count; i++)
+                {
+                    x = (Person) AllObjects[i];
+                    if (x.GetName().GetFirstName().Equals(name.GetFirstName()) &&
+                        x.GetName().GetLastName().Equals(name.GetLastName()) &&
+                        x.GetAge().Equals(age))
+                    {
+                        result = true;
+                    }
+                }
+            }
+            catch (Exception E)
+            {
+                //
+            }
+            return result;
+        }
+
+        public int GetID()
+        {
+            return _ID;
         }
 
         public int GetAge()

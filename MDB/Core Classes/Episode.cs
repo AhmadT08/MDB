@@ -8,14 +8,16 @@ namespace MDB
     {
         private int _number;
         private int _season;
+        private string _title;
         private List<Person> _cast;
         private double _rating;
         private Show _show;
 
-        public Episode(int number, int season, List<Person> cast, double rating, Show show)
+        public Episode(int number, int season, string title, List<Person> cast, double rating, Show show)
         {
             _number = number;
             _season = season;
+            _title = title;
             _cast = cast;
             _rating = rating;
             _show = show;
@@ -34,9 +36,9 @@ namespace MDB
             for (int i = 0; i < AllObjects.Count; i++)
             {
                 x = (Episode)AllObjects[i];
-                if (x.GetNumber().Equals(this.GetNumber())
-                    && x.GetSeason().Equals(this.GetSeason())
-                    && x.GetShow().Equals(this.GetShow()))
+                if (x.GetNumber().Equals(GetNumber())
+                    && x.GetSeason().Equals(GetSeason())
+                    && x.GetShow().Equals(GetShow()))
                 {
                     result = x;
                 }
@@ -44,7 +46,7 @@ namespace MDB
             return result;
         }
 
-        public static void Update(Object x)
+        public static void Update(object x)
         {
             MultimediaDB.db.Store(x);
         }
@@ -56,9 +58,9 @@ namespace MDB
             for (int i = 0; i < AllObjects.Count; i++)
             {
                 x = (Episode)AllObjects[i];
-                if (x.GetNumber().Equals(this.GetNumber())
-                    && x.GetSeason().Equals(this.GetSeason())
-                    && x.GetShow().Equals(this.GetShow()))
+                if (x.GetNumber().Equals(GetNumber())
+                    && x.GetSeason().Equals(GetSeason())
+                    && x.GetShow().Equals(GetShow()))
                 {
                     MultimediaDB.db.Delete(x);
                 }
@@ -88,6 +90,19 @@ namespace MDB
             Episode DBObject = GetMatchingObject();
             _season = s;
             DBObject._season = s;
+            Update(DBObject);
+        }
+
+        public string GetTitle()
+        {
+            return _title;
+        }
+
+        public void SetTitle(string s)
+        {
+            Episode DBObject = GetMatchingObject();
+            _title = s;
+            DBObject._title = s;
             Update(DBObject);
         }
 

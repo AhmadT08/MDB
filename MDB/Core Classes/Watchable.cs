@@ -15,7 +15,7 @@ namespace MDB
 {
     class Watchable
     {
-        private int _ID = 0;
+        protected readonly int _ID;
         private List<Award> _awardNominations;
         private List<Award> _awardWins;
         private List<string> _genre;
@@ -32,7 +32,7 @@ namespace MDB
                          List<Person> mainCast, string mpaaRating, string synopsis, string productionStatus, double rating,
                          List<User> subscribers, string titleName, Image poster)
         {
-            _ID = ++_ID;
+            _ID = MultimediaDB.db.QueryByExample(typeof(Movie)).Count + MultimediaDB.db.QueryByExample(typeof(Show)).Count + 1;
             _awardNominations = awardNominations;
             _awardWins = awardWins;
             _genre = genre;
@@ -56,7 +56,7 @@ namespace MDB
             return new Watchable();
         }
 
-        public static void Update(Object x)
+        public static void Update(object x)
         {
 
         }
@@ -66,7 +66,7 @@ namespace MDB
 
         }
 
-        public int getID()
+        public int GetID()
         {
             return _ID;
         }
