@@ -13,10 +13,12 @@ namespace MDB
     {
         public static IObjectContainer db;
         public static User sessionUser;
+        public static String sessionUsername;
         [STAThread]
         static void Main()
         {
             db = Db4oFactory.OpenFile("../../MDBdraft.yap");
+
             //            sessionUser = User.GetUserByUsername("TOMNAZ1");
 
 
@@ -30,7 +32,6 @@ namespace MDB
             //
             //            User x = new User("password", "Tomnaz1", new List<Watchable>(), new List<Watchable>(), new FullName("Ahmad", "Hisham"), DateTime.Today, "dsiajofdsoifja",
             //                new List<Watchable>(), new List<Person>(), new List<string>());
-            sessionUser = User.GetUserByUsername("Tomnaz1");
             //            sessionUser.SetPassword("password2");
             //                        Console.WriteLine(sessionUser.GetPassword());
             //            Console.WriteLine(sessionUser.GetWatchableSubscriptions().Count);
@@ -58,7 +59,7 @@ namespace MDB
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Login());
         }
     }
 }
