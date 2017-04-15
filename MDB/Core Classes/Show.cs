@@ -116,7 +116,22 @@ namespace MDB
                     result = true;
                 }
             }
+            return result;
+        }
 
+        public static bool Exists(int ID)
+        {
+            bool result = false;
+            Show x = new Show();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Show));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (Show)AllObjects[i];
+                if (x.GetID().Equals(ID))
+                {
+                    result = true;
+                }
+            }
             return result;
         }
 

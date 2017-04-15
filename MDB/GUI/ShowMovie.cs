@@ -33,7 +33,7 @@ namespace MDB.GUI
         {
             if (_Watchabletype == "movie")
             {
-                MDB.Movie watchable = MDB.Movie.GetMovieByID(_ID);
+                Movie watchable = Movie.GetMovieByID(_ID);
                 pictureBox1.Image = (Image)watchable.getPoster();
                 label1.Text = watchable.GetTitleName();
                 label2.Text = watchable.GetReleaseDate().Year.ToString();
@@ -82,7 +82,7 @@ namespace MDB.GUI
             }
             else
             {
-                MDB.Show watchable = MDB.Show.GetShowByID(_ID);
+                Show watchable = MDB.Show.GetShowByID(_ID);
                 pictureBox1.Image = (Image)watchable.getPoster();
                 label1.Text = watchable.GetTitleName();
                 label2.Text = watchable.GetPilotDate().Year.ToString();
@@ -153,16 +153,33 @@ namespace MDB.GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MDB.Movie m = MDB.Movie.GetMovieByID(_ID);
-            if (!MultimediaDB.sessionUser.GetWatchList().Contains(m))
+            if (Movie.Exists(_ID))
             {
-                MultimediaDB.sessionUser.AddToWatchList(m);
-                button1.Text = "Remove From Watchlist";
+                Movie m = Movie.GetMovieByID(_ID);
+                if (!MultimediaDB.sessionUser.GetWatchList().Contains(m))
+                {
+                    MultimediaDB.sessionUser.AddToWatchList(m);
+                    button1.Text = "Remove From Watchlist";
+                }
+                else
+                {
+                    MultimediaDB.sessionUser.RemoveFromWatchList(m);
+                    button1.Text = "Add To Watchlist";
+                }
             }
-            else
+            else if (MDB.Show.Exists(_ID))
             {
-                MultimediaDB.sessionUser.RemoveFromWatchList(m);
-                button1.Text = "Add To Watchlist";
+                Show m = MDB.Show.GetShowByID(_ID);
+                if (!MultimediaDB.sessionUser.GetWatchList().Contains(m))
+                {
+                    MultimediaDB.sessionUser.AddToWatchList(m);
+                    button1.Text = "Remove From Watchlist";
+                }
+                else
+                {
+                    MultimediaDB.sessionUser.RemoveFromWatchList(m);
+                    button1.Text = "Add To Watchlist";
+                }
             }
         }
 
@@ -173,36 +190,74 @@ namespace MDB.GUI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            MDB.Movie m = MDB.Movie.GetMovieByID(_ID);
-            if (MultimediaDB.sessionUser.GetWatchableSubscriptions().Contains(m))
+            if (Movie.Exists(_ID))
             {
-                MultimediaDB.sessionUser.UnsubscribeToWatchable(m);
-                MessageBox.Show("Successfully unsubscribed to " + m.GetTitleName());
-                Console.WriteLine(m.GetSubscribers().Count);
-                button3.Text = "Subscribe";
+                Movie m = Movie.GetMovieByID(_ID);
+                if (MultimediaDB.sessionUser.GetWatchableSubscriptions().Contains(m))
+                {
+                    MultimediaDB.sessionUser.UnsubscribeToWatchable(m);
+                    MessageBox.Show("Successfully unsubscribed to " + m.GetTitleName());
+                    Console.WriteLine(m.GetMatchingObject().GetSubscribers().Count);
+                    button3.Text = "Subscribe";
+                }
+                else
+                {
+                    MultimediaDB.sessionUser.SubscribeToWatchable(m);
+                    MessageBox.Show("Successfully subscribed to " + m.GetTitleName());
+                    Console.WriteLine(m.GetMatchingObject().GetSubscribers().Count);
+                    button3.Text = "Unsubscribe";
+                }
             }
-            else
+            else if (MDB.Show.Exists(_ID))
             {
-                MultimediaDB.sessionUser.SubscribeToWatchable(m);
-                MessageBox.Show("Successfully subscribed to " + m.GetTitleName());
-                Console.WriteLine(m.GetSubscribers().Count);
-                button3.Text = "Unsubscribe";
+                Show m = MDB.Show.GetShowByID(_ID);
+                if (MultimediaDB.sessionUser.GetWatchableSubscriptions().Contains(m))
+                {
+                    MultimediaDB.sessionUser.UnsubscribeToWatchable(m);
+                    MessageBox.Show("Successfully unsubscribed to " + m.GetTitleName());
+                    Console.WriteLine(m.GetSubscribers().Count);
+                    button3.Text = "Subscribe";
+                }
+                else
+                {
+                    MultimediaDB.sessionUser.SubscribeToWatchable(m);
+                    MessageBox.Show("Successfully subscribed to " + m.GetTitleName());
+                    Console.WriteLine(m.GetSubscribers().Count);
+                    button3.Text = "Unsubscribe";
+                }
             }
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MDB.Movie m = MDB.Movie.GetMovieByID(_ID);
-            if (!MultimediaDB.sessionUser.GetWatched().Contains(m))
+            if (Movie.Exists(_ID))
             {
-                MultimediaDB.sessionUser.AddToWatched(m);
-                button2.Text = "Watched";
+                Movie m = Movie.GetMovieByID(_ID);
+                if (!MultimediaDB.sessionUser.GetWatched().Contains(m))
+                {
+                    MultimediaDB.sessionUser.AddToWatched(m);
+                    button2.Text = "Watched";
+                }
+                else
+                {
+                    MultimediaDB.sessionUser.RemoveFromWatched(m);
+                    button2.Text = "Not Watched";
+                }
             }
-            else
+            else if
+                (MDB.Show.Exists(_ID))
             {
-                MultimediaDB.sessionUser.RemoveFromWatched(m);
-                button2.Text = "Not Watched";
+                Show m = MDB.Show.GetShowByID(_ID);
+                if (!MultimediaDB.sessionUser.GetWatched().Contains(m))
+                {
+                    MultimediaDB.sessionUser.AddToWatched(m);
+                    button2.Text = "Watched";
+                }
+                else
+                {
+                    MultimediaDB.sessionUser.RemoveFromWatched(m);
+                    button2.Text = "Not Watched";
+                }
             }
         }
 
