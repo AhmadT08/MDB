@@ -213,6 +213,10 @@ namespace MDB
         public void Notify(String notification)
         {
             _subscribers.ForEach(x => x.UpdateObservers(notification));
+            //            foreach (User sub in _subscribers)
+            //            {
+            //                sub.UpdateObservers(notification);
+            //            }
         }
 
         public void RemoveSubscriber(User sub)

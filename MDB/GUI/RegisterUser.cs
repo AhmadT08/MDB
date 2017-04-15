@@ -24,7 +24,7 @@ namespace MDB.GUI
             User.Update(u); 
             Login l = new Login();
             l.Show();
-            this.Hide();
+            Hide();
         }
 
         private void label6_Click(object sender, EventArgs e)

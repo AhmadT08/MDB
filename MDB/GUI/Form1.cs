@@ -36,8 +36,8 @@ namespace MDB
         private void createPictureBoxandTitle(int id, Image poster, String title, String type)
         {
             Panel panel = new Panel();
-            panel.Size = new System.Drawing.Size(150, 220);
-            panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            panel.Size = new Size(150, 220);
+            panel.BackColor = Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
 
             PictureBox picturebox = new PictureBox();
             picturebox.MaximumSize = new Size(145, 215);
@@ -46,9 +46,9 @@ namespace MDB
             picturebox.SizeMode = PictureBoxSizeMode.StretchImage;
             picturebox.Image = poster;
             picturebox.TabStop = false;
-            picturebox.MouseHover += new System.EventHandler(this.picturebox_MouseHover);
-            picturebox.MouseLeave += new System.EventHandler(this.picturebox_MouseLeave);
-            picturebox.Click += new System.EventHandler(this.picturebox_Click);
+            picturebox.MouseHover += new EventHandler(picturebox_MouseHover);
+            picturebox.MouseLeave += new EventHandler(picturebox_MouseLeave);
+            picturebox.Click += new EventHandler(picturebox_Click);
 
             Label ItemTitle = new Label();
             ItemTitle.AutoSize = true;
@@ -62,7 +62,7 @@ namespace MDB
             ItemTitle.TextAlign = ContentAlignment.TopCenter;
             if (type == "Movie")
             {
-                panel.Location = new System.Drawing.Point(moviePicturePosition, 3);
+                panel.Location = new Point(moviePicturePosition, 3);
                 panel.Name = "WrappermovieBox" + moviePictureBoxCounter;
                 picturebox.Name = "movie-" + id;
                 picturebox.TabIndex = moviePictureBoxCounter;
@@ -77,7 +77,7 @@ namespace MDB
             }
             else if (type == "Show")
             {
-                panel.Location = new System.Drawing.Point(showPicturePosition, 3);
+                panel.Location = new Point(showPicturePosition, 3);
                 panel.Name = "WrappershowBox" + moviePictureBoxCounter;
                 picturebox.Name = "show-" + id;
                 picturebox.TabIndex = showPictureBoxCounter;
@@ -96,7 +96,7 @@ namespace MDB
         {
             PictureBox op = (PictureBox)sender;
             String[] lo = op.Name.Split('-');
-            Console.WriteLine(lo[0] + "-" + lo[1]);
+//            Console.WriteLine(lo[0] + "-" + lo[1]);
             ShowMovie showMovie = new ShowMovie(Convert.ToInt32(lo[1]), lo[0]);
             showMovie.ShowDialog();
         }
@@ -104,13 +104,13 @@ namespace MDB
         private void picturebox_MouseLeave(object sender, EventArgs e)
         {
             PictureBox op = (PictureBox)sender;
-            op.Parent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            op.Parent.BackColor = Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
         }
 
         private void picturebox_MouseHover(object sender, EventArgs e)
         {
             PictureBox op = (PictureBox)sender;
-            op.Parent.BackColor = System.Drawing.Color.Yellow;
+            op.Parent.BackColor = Color.Yellow;
         }
 
         private void AddToPanel(PictureBox picturebox, Label ItemTitle)
