@@ -13,28 +13,27 @@ namespace MDB
     {
         public static IObjectContainer db;
         public static User sessionUser;
-        public static String sessionUsername;
+        public static string sessionUsername;
         [STAThread]
+
+        public static void setSessionUsername(string op)
+        {
+            sessionUsername = op;
+        }
         static void Main()
         {
             db = Db4oFactory.OpenFile("../../MDBdraft.yap");
+            sessionUsername = "admin";
             //            sessionUser = User.GetUserByUsername("TOMNAZ1");
-
-
-
-            //            IObjectSet AllUsers = db.QueryByExample(typeof(User));
-            //            while (AllUsers.HasNext())
-            //            {
-            //                User a = (User)AllUsers.Next();
-            //                db.Delete(a);
-            //            }
+            //                        IObjectSet AllUsers = db.QueryByExample(typeof(User));
+            //                        while (AllUsers.HasNext())
+            //                        {
+            //                            User a = (User)AllUsers.Next();
+            //                            db.Delete(a);
+            //                        }
             //
             //            User x = new User("password", "Tomnaz1", new List<Watchable>(), new List<Watchable>(), new FullName("Ahmad", "Hisham"), DateTime.Today, "dsiajofdsoifja",
             //                new List<Watchable>(), new List<Person>(), new List<string>());
-            sessionUser = User.GetUserByUsername("Tomnaz1");
-            //            Console.WriteLine(sessionUser.GetNotifications()[0]);
-            //            Movie.GetMovieByTitle("Birdman").SetSubscribers(new List<User>());
-            //                        Console.WriteLine(Movie.GetMovieByTitle("Birdman").GetSubscribers().Count);
             //            sessionUser.SetPassword("password2");
             //                        Console.WriteLine(sessionUser.GetPassword());
             //            Console.WriteLine(sessionUser.GetWatchableSubscriptions().Count);
@@ -50,19 +49,19 @@ namespace MDB
 
             //}
 
-            //            Movie movieClass = new Movie();
-            //            IObjectSet movie = db.QueryByExample(typeof(Movie));
-            //            while (movie.HasNext())
-            //            {
-            //                movieClass = (Movie)movie.Next();
-            //                Console.WriteLine(movieClass.GetID());
-            //                Console.WriteLine(movieClass.GetTitleName());
-            //                Console.WriteLine(movieClass.GetSubscribers());
-            //            }
+            Movie movieClass = new Movie();
+            IObjectSet movie = db.QueryByExample(typeof(Movie));
+            while (movie.HasNext())
+            {
+                movieClass = (Movie)movie.Next();
+                Console.WriteLine(movieClass.GetID());
+                Console.WriteLine(movieClass.GetTitleName());
+                Console.WriteLine(movieClass.GetSubscribers());
+            }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Login());
         }
     }
 }

@@ -130,7 +130,7 @@
     <Compile Include="GUI\addShow.Designer.cs">
       <DependentUpon>addShow.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\addWatchable.cs" />
+    <Compile Include="Core Classes\addWatchable.cs" />
     <Compile Include="GUI\Form1.cs">
       <SubType>Form</SubType>
     </Compile>

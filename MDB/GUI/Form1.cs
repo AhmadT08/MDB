@@ -26,6 +26,7 @@ namespace MDB
         {
             InitializeComponent();
             initalizeMovies();
+            Console.WriteLine(MultimediaDB.sessionUser);
             if (MultimediaDB.sessionUsername == "admin")
             {
                 adminControl.Visible = true;
