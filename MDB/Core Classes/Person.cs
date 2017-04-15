@@ -128,7 +128,7 @@ namespace MDB
             {
                 for (int i = 0; i < AllObjects.Count; i++)
                 {
-                    x = (Person) AllObjects[i];
+                    x = (Person)AllObjects[i];
                     if (x.GetName().GetFirstName().Equals(name.GetFirstName()) &&
                         x.GetName().GetLastName().Equals(name.GetLastName()) &&
                         x.GetAge().Equals(age))
@@ -139,7 +139,7 @@ namespace MDB
             }
             catch (Exception E)
             {
-                //
+                Console.WriteLine(E);
             }
             return result;
         }

@@ -185,7 +185,8 @@ namespace MDB.GUI
             }
             else
             {
-                addEpisode ep = new addEpisode(MDB.Show.GetShowByTitle(textBox1.Text).GetID());
+                addEpisode ep = new addEpisode(MDB.Show.GetShowByTitle(textBox1.Text).GetID(), listBox1.Items);
+                ep.ShowDialog();
             }
         }
     }

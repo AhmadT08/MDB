@@ -10,11 +10,10 @@ namespace MDB
 {
     class Award
     {
-        private int _year;
+        private int _year;  
         private string _category;
         private string _title;
         private bool _win;
-        private bool _nomination;
         private Feature _feature;
         private Watchable _watchable;
 
