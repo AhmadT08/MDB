@@ -15,7 +15,7 @@ namespace MDB
         [STAThread]
         static void Main()
         {
-            db = Db4oFactory.OpenFile("../../MDBdraft4.yap");
+            db = Db4oFactory.OpenFile("../../MDBdraft.yap");
             //try
             //{
             //    Movie f = new Movie(new List<Award>(), new List<Award>(), new List<String>(),
