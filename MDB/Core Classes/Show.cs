@@ -40,7 +40,7 @@ namespace MDB
             for (int i = 0; i < AllObjects.Count; i++)
             {
                 x = (Show)AllObjects[i];
-                if (x.GetTitleName().Equals(GetTitleName()))
+                if (x.GetID().Equals(GetID()))
                 {
                     result = x;
                 }
@@ -48,7 +48,7 @@ namespace MDB
             return result;
         }
 
-        public new static void Update(Object x)
+        public new static void Update(object x)
         {
             MultimediaDB.db.Store(x);
         }
@@ -67,20 +67,75 @@ namespace MDB
             }
         }
 
+        public static Show GetShowByID(int ID)
+        {
+            Show result = new Show();
+
+            Show x = new Show();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Show));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (Show)AllObjects[i];
+                if (x.GetID().Equals(ID))
+                {
+                    result = x;
+                }
+            }
+
+            return result;
+        }
+
+        public static Show GetShowByTitle(string title)
+        {
+            Show result = new Show();
+
+            Show x = new Show();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Show));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (Show)AllObjects[i];
+                if (x.GetTitleName().Equals(title))
+                {
+                    result = x;
+                }
+            }
+
+            return result;
+        }
+
+        public static bool Exists(string title)
+        {
+            bool result = false;
+            Show x = new Show();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Show));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (Show)AllObjects[i];
+                if (x.GetTitleName().Equals(title))
+                {
+                    result = true;
+                }
+            }
+
+            return result;
+        }
+
         public void AddEpisode(Episode episode)
         {
             Show DBObject = GetMatchingObject();
             _episodeList.Add(episode);
+            _numberOfEpisodes++;
             DBObject._episodeList.Add(episode);
+            DBObject._numberOfEpisodes++;
             Update(DBObject);
         }
 
-        public DateTime getPilotDate()
+        public DateTime GetPilotDate()
         {
             return _pilotDate;
         }
 
-        public void setPilotDate(DateTime date)
+        public void SetPilotDate(DateTime date)
         {
             Show DBObject = GetMatchingObject();
             _pilotDate = date;
@@ -88,12 +143,12 @@ namespace MDB
             Update(DBObject);
         }
 
-        public int getNumberOfEpisodes()
+        public int GetNumberOfEpisodes()
         {
             return _numberOfEpisodes;
         }
 
-        public void setNumberOfEpisodes(int ep)
+        public void SetNumberOfEpisodes(int ep)
         {
             Show DBObject = GetMatchingObject();
             _numberOfEpisodes = ep;
@@ -101,12 +156,12 @@ namespace MDB
             Update(DBObject);
         }
 
-        public int getSeasons()
+        public int GetSeasons()
         {
             return _seasons;
         }
 
-        public void setSeasons(int s)
+        public void SetSeasons(int s)
         {
             Show DBObject = GetMatchingObject();
             _seasons = s;
