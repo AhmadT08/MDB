@@ -13,16 +13,18 @@ namespace MDB
     {
         public static IObjectContainer db;
         public static User sessionUser;
-        public static String sessionUsername;
+        public static string sessionUsername;
         [STAThread]
+
+        public static void setSessionUsername(string op)
+        {
+            sessionUsername = op;
+        }
         static void Main()
         {
             db = Db4oFactory.OpenFile("../../MDBdraft.yap");
-
+            sessionUsername = "admin";
             //            sessionUser = User.GetUserByUsername("TOMNAZ1");
-
-
-
             //                        IObjectSet AllUsers = db.QueryByExample(typeof(User));
             //                        while (AllUsers.HasNext())
             //                        {

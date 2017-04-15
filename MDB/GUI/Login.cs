@@ -26,8 +26,8 @@ namespace MDB.GUI
         private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
             RegisterUser r = new RegisterUser();
+            r.Closed += (s, args) => this.Close();
             r.Show();
-            this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,29 +36,32 @@ namespace MDB.GUI
             String password = textBox2.Text;
             User u = new User();
             Form1 f = new Form1();
-            if (textBox1.Text.Equals("admin") && textBox2.Text.Equals("admin"))
+            if (((String)textBox1.Text) == "admin" && ((String)textBox2.Text) == "admin")
             {
-                f.Show();
+                MultimediaDB.setSessionUsername("admin");
                 this.Hide();
-                MultimediaDB.sessionUsername = "admin";
-
+                f.Closed += (s, args) => this.Close();
+                f.Show();
             }
-            IObjectSet users = MDB.MultimediaDB.db.QueryByExample(typeof(User));
-
-            while (users.HasNext())
+            else
             {
-                u = (User)users.Next();
+                IObjectSet users = MDB.MultimediaDB.db.QueryByExample(typeof(User));
 
-                if (u.GetUsername() == textBox1.Text && u.GetPassword() == textBox2.Text)
+                while (users.HasNext())
                 {
-                    f.Show();
-                    this.Hide();
-                    MultimediaDB.sessionUser = u;
-                    MultimediaDB.sessionUsername = u.GetUsername();
-                }
-                else
-                {
-                    Console.WriteLine("Wrong Username or Password");
+                    u = (User)users.Next();
+                    if (u.GetUsername() == textBox1.Text && u.GetPassword() == textBox2.Text)
+                    {
+                        MultimediaDB.sessionUser = u;
+                        MultimediaDB.sessionUsername = u.GetUsername();
+                        this.Hide();
+                        f.Closed += (s, args) => this.Close();
+                        f.Show();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Wrong Username or Password");
+                    }
                 }
             }
         }
