@@ -10,6 +10,12 @@ namespace MDB.GUI
     {
         int _ID;
         string _Watchabletype;
+        int moviePictureBoxCounter = 1;
+        int moviePicturePosition = 4;
+        int movieTitlePosition = 7;
+        int showPictureBoxCounter = 1;
+        int showPicturePosition = 4;
+        int showTitlePosition = 7;
 
         public ShowMovie(int ID, string type)
         {
@@ -27,6 +33,7 @@ namespace MDB.GUI
                 userControls.Visible = true;
             }
             initializeData();
+            GenerateSuggestions();
         }
 
         private void initializeData()
@@ -51,6 +58,7 @@ namespace MDB.GUI
                     }
                 }
                 label5.Text = watchable.GetRating() + "%";
+                label6.Text = "Similar Movies";
                 richTextBox1.Text = watchable.GetSynopsis();
 
                 if (MultimediaDB.sessionUser.GetWatchableSubscriptions().Contains(watchable))
@@ -100,6 +108,7 @@ namespace MDB.GUI
                     }
                 }
                 label5.Text = watchable.GetRating() + "%";
+                label6.Text = "Similar Shows";
                 richTextBox1.Text = watchable.GetSynopsis();
 
                 if (MultimediaDB.sessionUser.GetWatchableSubscriptions().Contains(watchable))
@@ -261,10 +270,111 @@ namespace MDB.GUI
             }
         }
 
+        public void GenerateSuggestions()
+        {
+            if (_Watchabletype.Equals("movie"))
+            {
+                IList<Movie> result = MultimediaDB.db.Query<Movie>(delegate (Movie m)
+                {
+                    return m.GetGenre().Contains(Movie.GetMovieByID(_ID).GetGenre()[0]) || m.GetGenre().Contains(Movie.GetMovieByID(_ID).GetGenre()[1]);
+                });
+                Console.WriteLine(result.Count);
+                foreach (Movie m in result)
+                {
+                    if (m.GetTitleName().Equals(Movie.GetMovieByID(_ID).GetTitleName()))
+                    {
+                        //do nothing
+                    }
+                    else
+                    {
+                        PictureBox picturebox = new PictureBox();
+                        picturebox.MaximumSize = new Size(145, 215);
+                        picturebox.Location = new Point(2, 2);
+                        picturebox.Size = new Size(145, 215);
+                        picturebox.SizeMode = PictureBoxSizeMode.StretchImage;
+                        picturebox.Image = m.getPoster();
+                        picturebox.TabStop = false;
+
+                        Label ItemTitle = new Label();
+                        ItemTitle.AutoSize = true;
+                        ItemTitle.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+                        ItemTitle.ForeColor = Color.White;
+                        ItemTitle.MaximumSize = new Size(145, 0);
+                        ItemTitle.MinimumSize = new Size(145, 0);
+                        ItemTitle.Size = new Size(145, 23);
+                        ItemTitle.TabIndex = 1;
+                        ItemTitle.Text = m.GetTitleName();
+                        ItemTitle.TextAlign = ContentAlignment.TopCenter;
+
+                        picturebox.Name = "movie-" + m.GetID();
+                        picturebox.TabIndex = moviePictureBoxCounter;
+                        picturebox.Location = new Point(moviePicturePosition, 460);
+                        ItemTitle.Location = new Point(movieTitlePosition, 218);
+                        ItemTitle.Name = "mLabel" + moviePictureBoxCounter;
+                        this.Controls.Add(picturebox);
+                        this.Controls.Add(ItemTitle);
+                        moviePictureBoxCounter++;
+                        moviePicturePosition += 156;
+                        movieTitlePosition += 152;
+                    }
+                }
+            }
+            else
+            {
+                IList<Show> result = MultimediaDB.db.Query<Show>(delegate (Show m)
+                {
+                    return m.GetGenre().Contains(MDB.Show.GetShowByID(_ID).GetGenre()[0]) || m.GetGenre().Contains(MDB.Show.GetShowByID(_ID).GetGenre()[1]);
+                });
+                Console.WriteLine(result.Count);
+                foreach (Show m in result)
+                {
+                    if (m.GetTitleName().Equals(MDB.Show.GetShowByID(_ID).GetTitleName()))
+                    {
+                        //do nothing
+                    }
+                    else
+                    {
+                        PictureBox picturebox = new PictureBox();
+                        picturebox.MaximumSize = new Size(145, 215);
+                        picturebox.Location = new Point(2, 2);
+                        picturebox.Size = new Size(145, 215);
+                        picturebox.SizeMode = PictureBoxSizeMode.StretchImage;
+                        picturebox.Image = m.getPoster();
+                        picturebox.TabStop = false;
+
+                        Label ItemTitle = new Label();
+                        ItemTitle.AutoSize = true;
+                        ItemTitle.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+                        ItemTitle.ForeColor = Color.White;
+                        ItemTitle.MaximumSize = new Size(145, 0);
+                        ItemTitle.MinimumSize = new Size(145, 0);
+                        ItemTitle.Size = new Size(145, 23);
+                        ItemTitle.TabIndex = 1;
+                        ItemTitle.Text = m.GetTitleName();
+                        ItemTitle.TextAlign = ContentAlignment.TopCenter;
+
+                        picturebox.Name = "Show-" + m.GetID();
+                        picturebox.TabIndex = moviePictureBoxCounter;
+                        picturebox.Location = new Point(moviePicturePosition, 460);
+                        ItemTitle.Location = new Point(movieTitlePosition, 218);
+                        ItemTitle.Name = "mLabel" + moviePictureBoxCounter;
+                        this.Controls.Add(picturebox);
+                        this.Controls.Add(ItemTitle);
+                        moviePictureBoxCounter++;
+                        moviePicturePosition += 156;
+                        movieTitlePosition += 152;
+                    }
+                }
+
+
+            }
+        }
+
         private void button4_Click(object sender, EventArgs e)
         {
             addMovie movie = new addMovie();
             movie.ShowDialog();
         }
     }
+
 }
