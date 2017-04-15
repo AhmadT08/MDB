@@ -16,10 +16,16 @@ namespace MDB.GUI
         private Show show;
         public static ArrayList mainCast = new ArrayList();
 
-        public addEpisode(int ID)
+        public addEpisode(int ID, ListBox.ObjectCollection mainCast)
         {
             InitializeComponent();
             show = MDB.Show.GetShowByID(ID);
+
+            //Adds main cast to episode. Leaves room for special guests and such.
+            for (int i = 0; i < mainCast.Count; i++)
+            {
+                listBox1.Items.Add(mainCast[i]);
+            }
         }
 
         public void addPersonToCast(int personID)

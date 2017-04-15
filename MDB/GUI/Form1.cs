@@ -13,11 +13,12 @@ namespace MDB
 {
     public partial class Form1 : Form
     {
-        PictureBox picturebox;
-        Label movieLabel;
-        int pictureBoxCounter = 1;
-        int picturePosition = 4;
-        int titlePosition = 7;
+        int moviePictureBoxCounter = 1;
+        int moviePicturePosition = 4;
+        int movieTitlePosition = 7;
+        int showPictureBoxCounter = 1;
+        int showPicturePosition = 4;
+        int showTitlePosition = 7;
         public static IObjectContainer db;
         public Form1()
         {
@@ -25,53 +26,72 @@ namespace MDB
             initalizeMovies();
         }
 
-        private void createPictureBoxandTitle(Movie mov)
+        private void createPictureBoxandTitle(Image poster, String title, String type)
         {
-            picturebox = new PictureBox();
-            picturebox.Location = new Point(picturePosition, 0);
+            PictureBox picturebox = new PictureBox();
             picturebox.MaximumSize = new Size(145, 215);
-            picturebox.Name = "pictureBox" + pictureBoxCounter;
             picturebox.Size = new Size(145, 215);
             picturebox.SizeMode = PictureBoxSizeMode.StretchImage;
-            picturebox.TabIndex = pictureBoxCounter;
-            try
-            {
-                picturebox.Image = (Image)mov.getPoster();
-            }
-            catch
-            {
-
-            }
+            picturebox.Image = poster;
             picturebox.TabStop = false;
 
-            movieLabel = new Label();
-            movieLabel.AutoSize = true;
-            movieLabel.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
-            movieLabel.ForeColor = Color.White;
-            movieLabel.Location = new Point(titlePosition, 218);
-            movieLabel.MaximumSize = new Size(145, 0);
-            movieLabel.MinimumSize = new Size(145, 0);
-            movieLabel.Name = "mLabel" + pictureBoxCounter;
-            movieLabel.Size = new Size(145, 23);
-            movieLabel.TabIndex = 1;
-            movieLabel.Text = mov.GetTitleName();
-            movieLabel.TextAlign = ContentAlignment.TopCenter;
-
-            panel14.Controls.Add(picturebox);
-            panel14.Controls.Add(movieLabel);
-            pictureBoxCounter++;
-            picturePosition += 156;
-            titlePosition += 152;
+            Label ItemTitle = new Label();
+            ItemTitle.AutoSize = true;
+            ItemTitle.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            ItemTitle.ForeColor = Color.White;
+            ItemTitle.MaximumSize = new Size(145, 0);
+            ItemTitle.MinimumSize = new Size(145, 0);
+            ItemTitle.Size = new Size(145, 23);
+            ItemTitle.TabIndex = 1;
+            ItemTitle.Text = title;
+            ItemTitle.TextAlign = ContentAlignment.TopCenter;
+            if (type == "Movie")
+            {
+                picturebox.Location = new Point(moviePicturePosition, 0);
+                picturebox.Name = "movieBox" + moviePictureBoxCounter;
+                picturebox.TabIndex = moviePictureBoxCounter;
+                ItemTitle.Location = new Point(movieTitlePosition, 218);
+                ItemTitle.Name = "mLabel" + moviePictureBoxCounter;
+                panel14.Controls.Add(picturebox);
+                panel14.Controls.Add(ItemTitle);
+                moviePictureBoxCounter++;
+                moviePicturePosition += 156;
+                movieTitlePosition += 152;
+            }
+            else if (type == "Show")
+            {
+                picturebox.Location = new Point(showPicturePosition, 0);
+                picturebox.Name = "movieBox" + showPictureBoxCounter;
+                picturebox.TabIndex = showPictureBoxCounter;
+                ItemTitle.Location = new Point(showTitlePosition, 218);
+                ItemTitle.Name = "mLabel" + showPictureBoxCounter;
+                panel2.Controls.Add(picturebox);
+                panel2.Controls.Add(ItemTitle);
+                showPictureBoxCounter++;
+                showPicturePosition += 156;
+                showTitlePosition += 152;
+            }
         }
 
+        private void AddToPanel(PictureBox picturebox, Label ItemTitle)
+        {
+
+        }
         public void initalizeMovies()
         {
             Movie movieClass = new Movie();
+            Show showClass = new Show();
             IObjectSet movie = MultimediaDB.db.QueryByExample(typeof(Movie));
+            IObjectSet show = MultimediaDB.db.QueryByExample(typeof(Show));
             while (movie.HasNext())
             {
                 movieClass = (Movie)movie.Next();
-                createPictureBoxandTitle(movieClass);
+                createPictureBoxandTitle((Image)movieClass.getPoster(), movieClass.GetTitleName(), "Movie");
+            }
+            while (show.HasNext())
+            {
+                showClass = (Show)show.Next();
+                createPictureBoxandTitle((Image)showClass.getPoster(), showClass.GetTitleName(), "Show");
             }
         }
 

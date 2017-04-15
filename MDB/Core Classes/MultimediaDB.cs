@@ -27,16 +27,16 @@ namespace MDB
             //{
 
             //}
-            Movie movieClass = new Movie();
-            IObjectSet movie = db.QueryByExample(typeof(Movie));
+            Show movieClass = new Show();
+            IObjectSet movie = db.QueryByExample(typeof(Show));
             while (movie.HasNext())
             {
-                movieClass = (Movie)movie.Next();
-                Console.WriteLine(movieClass.GetAwardWins()[0].GetTitle());
+                movieClass = (Show)movie.Next();
+                Console.WriteLine(movieClass.GetTitleName());
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new addMovie());
+            Application.Run(new Form1());
         }
     }
 }
