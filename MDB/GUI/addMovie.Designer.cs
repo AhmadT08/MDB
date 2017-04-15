@@ -276,7 +276,14 @@
             "Comedy",
             "Adventure",
             "Noir",
-            "Western"});
+            "Western",
+            "Crime",
+            "Mystery",
+            "Romance",
+            "War",
+            "History",
+            "Animation",
+            "Drama"});
             this.checkedListBox1.Location = new System.Drawing.Point(95, 210);
             this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkedListBox1.Name = "checkedListBox1";

@@ -42,6 +42,7 @@
             this.adminControl = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.userControls = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.adminControl.SuspendLayout();
             this.userControls.SuspendLayout();
@@ -50,10 +51,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-3, -1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(-2, -1);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(345, 519);
+            this.pictureBox1.Size = new System.Drawing.Size(259, 422);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -64,9 +65,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Gill Sans MT", 47.82089F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(348, -7);
+            this.label1.Location = new System.Drawing.Point(261, -6);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(188, 118);
+            this.label1.Size = new System.Drawing.Size(140, 87);
             this.label1.TabIndex = 1;
             this.label1.Text = "Her";
             // 
@@ -75,9 +77,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Gill Sans MT", 11.8209F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(364, 114);
+            this.label2.Location = new System.Drawing.Point(273, 93);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 31);
+            this.label2.Size = new System.Drawing.Size(42, 23);
             this.label2.TabIndex = 2;
             this.label2.Text = "2013";
             // 
@@ -86,9 +89,10 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Gill Sans MT", 11.8209F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(684, 114);
+            this.label3.Location = new System.Drawing.Point(513, 93);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 31);
+            this.label3.Size = new System.Drawing.Size(58, 23);
             this.label3.TabIndex = 3;
             this.label3.Text = "126min";
             // 
@@ -97,9 +101,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Gill Sans MT", 11.8209F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(861, 114);
+            this.label4.Location = new System.Drawing.Point(646, 93);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(297, 31);
+            this.label4.Size = new System.Drawing.Size(216, 23);
             this.label4.TabIndex = 4;
             this.label4.Text = "Drama/Science-fiction/romance";
             // 
@@ -108,9 +113,10 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Gill Sans MT", 11.8209F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(528, 114);
+            this.label5.Location = new System.Drawing.Point(396, 93);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 31);
+            this.label5.Size = new System.Drawing.Size(37, 23);
             this.label5.TabIndex = 5;
             this.label5.Text = "80%";
             // 
@@ -120,11 +126,11 @@
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Font = new System.Drawing.Font("Gill Sans MT", 11.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.richTextBox1.Location = new System.Drawing.Point(369, 174);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.richTextBox1.Location = new System.Drawing.Point(277, 141);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(780, 133);
+            this.richTextBox1.Size = new System.Drawing.Size(585, 108);
             this.richTextBox1.TabIndex = 6;
             this.richTextBox1.Text = "A movie with Scarlet bas keda 5alsna ";
             // 
@@ -133,10 +139,10 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.20895F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(3, 29);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Location = new System.Drawing.Point(2, 24);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(225, 37);
+            this.button1.Size = new System.Drawing.Size(169, 30);
             this.button1.TabIndex = 7;
             this.button1.Text = "Add to Watchlist ";
             this.button1.UseVisualStyleBackColor = false;
@@ -147,10 +153,10 @@
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.20895F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(3, 84);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Location = new System.Drawing.Point(2, 68);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(225, 37);
+            this.button2.Size = new System.Drawing.Size(169, 30);
             this.button2.TabIndex = 8;
             this.button2.Text = "Watched";
             this.button2.UseVisualStyleBackColor = false;
@@ -161,10 +167,10 @@
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.20895F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(3, 141);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button3.Location = new System.Drawing.Point(2, 115);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(225, 37);
+            this.button3.Size = new System.Drawing.Size(169, 30);
             this.button3.TabIndex = 9;
             this.button3.Text = "Subscribe";
             this.button3.UseVisualStyleBackColor = false;
@@ -173,18 +179,20 @@
             // adminControl
             // 
             this.adminControl.Controls.Add(this.button4);
-            this.adminControl.Location = new System.Drawing.Point(1056, 407);
+            this.adminControl.Location = new System.Drawing.Point(792, 331);
+            this.adminControl.Margin = new System.Windows.Forms.Padding(2);
             this.adminControl.Name = "adminControl";
-            this.adminControl.Size = new System.Drawing.Size(159, 87);
+            this.adminControl.Size = new System.Drawing.Size(119, 71);
             this.adminControl.TabIndex = 12;
             this.adminControl.Visible = false;
             // 
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Gill Sans MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(40, 50);
+            this.button4.Location = new System.Drawing.Point(30, 41);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(116, 35);
+            this.button4.Size = new System.Drawing.Size(87, 28);
             this.button4.TabIndex = 1;
             this.button4.Text = "Edit Movie";
             this.button4.UseVisualStyleBackColor = true;
@@ -195,17 +203,31 @@
             this.userControls.Controls.Add(this.button1);
             this.userControls.Controls.Add(this.button2);
             this.userControls.Controls.Add(this.button3);
-            this.userControls.Location = new System.Drawing.Point(368, 293);
+            this.userControls.Location = new System.Drawing.Point(276, 238);
+            this.userControls.Margin = new System.Windows.Forms.Padding(2);
             this.userControls.Name = "userControls";
-            this.userControls.Size = new System.Drawing.Size(233, 201);
+            this.userControls.Size = new System.Drawing.Size(175, 163);
             this.userControls.TabIndex = 13;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Gill Sans MT", 16.82089F);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(11, 423);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 33);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Similar";
             // 
             // ShowMovie
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.ClientSize = new System.Drawing.Size(1227, 514);
+            this.ClientSize = new System.Drawing.Size(920, 677);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.userControls);
             this.Controls.Add(this.adminControl);
             this.Controls.Add(this.richTextBox1);
@@ -217,7 +239,7 @@
             this.Controls.Add(this.pictureBox1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ShowMovie";
             this.Text = "ShowMovie";
             this.Load += new System.EventHandler(this.ShowMovie_Load);
@@ -244,5 +266,6 @@
         private System.Windows.Forms.Panel adminControl;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel userControls;
+        private System.Windows.Forms.Label label6;
     }
 }

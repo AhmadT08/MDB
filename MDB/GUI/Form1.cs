@@ -96,7 +96,7 @@ namespace MDB
         {
             PictureBox op = (PictureBox)sender;
             String[] lo = op.Name.Split('-');
-//            Console.WriteLine(lo[0] + "-" + lo[1]);
+            //            Console.WriteLine(lo[0] + "-" + lo[1]);
             ShowMovie showMovie = new ShowMovie(Convert.ToInt32(lo[1]), lo[0]);
             showMovie.ShowDialog();
         }
