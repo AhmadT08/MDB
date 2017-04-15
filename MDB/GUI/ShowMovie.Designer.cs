@@ -138,7 +138,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(169, 30);
             this.button1.TabIndex = 7;
-            this.button1.Text = "Add to Wachlist ";
+            this.button1.Text = "Add to Watchlist ";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -154,6 +154,7 @@
             this.button2.TabIndex = 8;
             this.button2.Text = "Watched";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
