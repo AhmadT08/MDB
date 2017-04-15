@@ -185,7 +185,7 @@ namespace MDB
             Person DBObject = GetMatchingObject();
             _awardNominations = nom;
             DBObject._awardNominations = nom;
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._awardNominations);
         }
 
         public List<Award> GetAwardWins()
@@ -198,7 +198,7 @@ namespace MDB
             Person DBObject = GetMatchingObject();
             _awardWins = win;
             DBObject._awardWins = win;
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._awardWins);
         }
 
         public DateTime GetDateOfBirth()
@@ -263,7 +263,7 @@ namespace MDB
             Person DBObject = GetMatchingObject();
             _features = feat;
             DBObject._features = feat;
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._features);
         }
 
         public char GetGender()
@@ -289,55 +289,55 @@ namespace MDB
             Person DBObject = GetMatchingObject();
             _subscribers = subs;
             DBObject._subscribers = subs;
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._subscribers);
         }
 
         public void AddSubscriber(User sub)
         {
             Person DBObject = GetMatchingObject();
-            _subscribers.Add(sub);
+            //            _subscribers.Add(sub);
             DBObject._subscribers.Add(sub);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._subscribers);
         }
 
         public void RemoveSubscriber(User sub)
         {
             Person DBObject = GetMatchingObject();
-            _subscribers.Remove(sub);
+            //            _subscribers.Remove(sub);
             DBObject._subscribers.Remove(sub);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._subscribers);
         }
 
         public void AddFeature(Feature feat)
         {
             Person DBObject = GetMatchingObject();
-            _features.Add(feat);
+            //            _features.Add(feat);
             DBObject._features.Add(feat);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._features);
         }
 
         public void RemoveFeature(Feature feat)
         {
             Person DBObject = GetMatchingObject();
-            _features.Remove(feat);
+            //            _features.Remove(feat);
             DBObject._features.Remove(feat);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._features);
         }
 
         public void AddAwardNomination(Award awardNomination)
         {
             Person DBObject = GetMatchingObject();
-            _awardNominations.Add(awardNomination);
+            //            _awardNominations.Add(awardNomination);
             DBObject._awardNominations.Add(awardNomination);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._awardNominations);
         }
 
         public void AddAwardWin(Award awardWin)
         {
             Person DBObject = GetMatchingObject();
-            _awardWins.Add(awardWin);
+            //            _awardWins.Add(awardWin);
             DBObject._awardWins.Add(awardWin);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._awardWins);
         }
 
     }

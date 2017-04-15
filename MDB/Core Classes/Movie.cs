@@ -30,7 +30,7 @@ namespace MDB
 
         }
 
-        public new Movie GetMatchingObject()
+        public override Watchable GetMatchingObject()
         {
             Movie result = new Movie();
             Movie x = new Movie();
@@ -51,7 +51,7 @@ namespace MDB
             MultimediaDB.db.Store(x);
         }
 
-        public new void Delete()
+        public override void Delete()
         {
             Movie x = new Movie();
             IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Movie));
@@ -125,7 +125,7 @@ namespace MDB
 
         public void SetReleaseDate(DateTime release)
         {
-            Movie DBObject = GetMatchingObject();
+            Movie DBObject = (Movie)GetMatchingObject();
             _releaseDate = release;
             DBObject._releaseDate = release;
             Update(DBObject);
@@ -138,7 +138,7 @@ namespace MDB
 
         public void SetRunTime(int run)
         {
-            Movie DBObject = GetMatchingObject();
+            Movie DBObject = (Movie)GetMatchingObject();
             _runTime = run;
             DBObject._runTime = run;
             Update(DBObject);

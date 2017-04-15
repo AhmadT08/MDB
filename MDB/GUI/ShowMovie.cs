@@ -10,11 +10,22 @@ namespace MDB.GUI
     {
         int _ID;
         string _Watchabletype;
+
         public ShowMovie(int ID, string type)
         {
             InitializeComponent();
             _ID = ID;
             _Watchabletype = type;
+            if (MultimediaDB.sessionUsername == "admin")
+            {
+                adminControl.Visible = true;
+                userControls.Visible = false;
+            }
+            else
+            {
+                adminControl.Visible = false;
+                userControls.Visible = true;
+            }
             initializeData();
         }
 
@@ -22,10 +33,65 @@ namespace MDB.GUI
         {
             if (_Watchabletype == "movie")
             {
-                MDB.Movie show = MDB.Movie.GetMovieByID(_ID);
-                pictureBox1.Image = (Image)show.getPoster();
-                label1.Text = show.GetTitleName();
+                MDB.Movie watchable = MDB.Movie.GetMovieByID(_ID);
+                pictureBox1.Image = (Image)watchable.getPoster();
+                label1.Text = watchable.GetTitleName();
+                label2.Text = watchable.GetReleaseDate().Year.ToString();
+                label3.Text = watchable.GetRunTime() + "min";
+                label4.Text = "";
+                for (int i = 0; i < watchable.GetGenre().Count; i++)
+                {
+                    if (i == watchable.GetGenre().Count - 1)
+                    {
+                        label4.Text += watchable.GetGenre()[i];
+                    }
+                    else
+                    {
+                        label4.Text += watchable.GetGenre()[i] + "/";
+                    }
+                }
+                label5.Text = watchable.GetRating() + "%";
+                richTextBox1.Text = watchable.GetSynopsis();
 
+                if (MultimediaDB.sessionUser.GetWatchableSubscriptions().Contains(watchable))
+                {
+                    button3.Text = "Unsubscribe";
+                }
+                else
+                {
+                    button3.Text = "Subscribe";
+                }
+            }
+            else
+            {
+                MDB.Show watchable = MDB.Show.GetShowByID(_ID);
+                pictureBox1.Image = (Image)watchable.getPoster();
+                label1.Text = watchable.GetTitleName();
+                label2.Text = watchable.GetPilotDate().Year.ToString();
+                label3.Text = watchable.GetSeasons() + " seasons";
+                label4.Text = "";
+                for (int i = 0; i < watchable.GetGenre().Count; i++)
+                {
+                    if (i == watchable.GetGenre().Count - 1)
+                    {
+                        label4.Text += watchable.GetGenre()[i];
+                    }
+                    else
+                    {
+                        label4.Text += watchable.GetGenre()[i] + "/";
+                    }
+                }
+                label5.Text = watchable.GetRating() + "%";
+                richTextBox1.Text = watchable.GetSynopsis();
+
+                if (MultimediaDB.sessionUser.GetWatchableSubscriptions().Contains(watchable))
+                {
+                    button3.Text = "Unsubscribe";
+                }
+                else
+                {
+                    button3.Text = "Subscribe";
+                }
             }
         }
 
@@ -51,7 +117,17 @@ namespace MDB.GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            MDB.Movie m = MDB.Movie.GetMovieByID(_ID);
+            if (!MultimediaDB.sessionUser.GetWatchList().Contains(m))
+            {
+                MultimediaDB.sessionUser.AddToWatchList(m);
+                button1.Text = "Remove From Watchlist";
+            }
+            else
+            {
+                MultimediaDB.sessionUser.RemoveFromWatchList(m);
+                button1.Text = "Add To Watchlist";
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -61,23 +137,40 @@ namespace MDB.GUI
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-            FullName ana = new FullName("Ahmed", "hisham");
-            DateTime dateOfBirth = new DateTime();
-            List<User> us = new List<User>();
-            User u = new User("qweewq", "TOMNAZ1", new List<Watchable>(), new List<Watchable>(), ana, dateOfBirth, "boss_tomna@hotmail.com", new List<Watchable>(), new List<Person>());
-            us.Add(u);
-            //u.SetWatchableSubscriptions(new List<Watchable>());
-            MDB.Movie m = MDB.Movie.GetMovieByTitle("Birdman");
-            u.SubscribeToWatchable(m);
-
-            User movieClass = new User();
-            IObjectSet movie = MDB.MultimediaDB.db.QueryByExample(typeof(User));
-            while (movie.HasNext())
+            MDB.Movie m = MDB.Movie.GetMovieByID(_ID);
+            if (MultimediaDB.sessionUser.GetWatchableSubscriptions().Contains(m))
             {
-                movieClass = (User)movie.Next();
-                Console.WriteLine(movieClass.GetWatchableSubscriptions().Count);
+                MultimediaDB.sessionUser.UnsubscribeToWatchable(m);
+                MessageBox.Show("Successfully unsubscribed to " + m.GetTitleName());
+                button3.Text = "Subscribe";
             }
+            else
+            {
+                MultimediaDB.sessionUser.SubscribeToWatchable(m);
+                MessageBox.Show("Successfully subscribed to " + m.GetTitleName());
+                button3.Text = "Unsubscribe";
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MDB.Movie m = MDB.Movie.GetMovieByID(_ID);
+            if (!MultimediaDB.sessionUser.GetWatched().Contains(m))
+            {
+                MultimediaDB.sessionUser.AddToWatched(m);
+                button2.Text = "Watched";
+            }
+            else
+            {
+                MultimediaDB.sessionUser.RemoveFromWatched(m);
+                button2.Text = "Not Watched";
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

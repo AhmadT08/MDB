@@ -116,7 +116,7 @@ namespace MDB
             Episode DBObject = GetMatchingObject();
             _cast = c;
             DBObject._cast = c;
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._cast);
         }
 
         public double GetRating()

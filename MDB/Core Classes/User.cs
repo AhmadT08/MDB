@@ -54,7 +54,7 @@ namespace MDB
             return result;
         }
 
-        public static void Update(object x)
+        public static void Update(User x)
         {
             MultimediaDB.db.Store(x);
         }
@@ -71,6 +71,22 @@ namespace MDB
                     MultimediaDB.db.Delete(x);
                 }
             }
+        }
+
+        public static User GetUserByUsername(string username)
+        {
+            User result = new User();
+            User x = new User();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(User));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (User)AllObjects[i];
+                if (x.GetUsername().Equals(username))
+                {
+                    result = x;
+                }
+            }
+            return result;
         }
 
         public string GetUsername()
@@ -174,7 +190,7 @@ namespace MDB
             User DBObject = GetMatchingObject();
             _watchableSubscriptions = watch;
             DBObject._watchableSubscriptions = watch;
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._watchableSubscriptions);
         }
 
         public List<Person> GetPersonSubscriptions()
@@ -187,75 +203,73 @@ namespace MDB
             User DBObject = GetMatchingObject();
             _personSubscriptions = person;
             DBObject._personSubscriptions = person;
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._personSubscriptions);
         }
 
         public void SubscribeToPerson(Person person)
         {
             User DBObject = GetMatchingObject();
             person.AddSubscriber(this);
-            _personSubscriptions.Add(person);
+            //            _personSubscriptions.Add(person);
             DBObject._personSubscriptions.Add(person);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._personSubscriptions);
         }
 
         public void UnsubscribeToPerson(Person person)
         {
             User DBObject = GetMatchingObject();
             person.RemoveSubscriber(this);
-            _personSubscriptions.Remove(person);
+            //            _personSubscriptions.Remove(person);
             DBObject._personSubscriptions.Remove(person);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._personSubscriptions);
         }
 
         public void SubscribeToWatchable(Watchable watchable)
         {
             User DBObject = GetMatchingObject();
             watchable.AddSubscriber(this);
-            _watchableSubscriptions.Add(watchable);
             DBObject._watchableSubscriptions.Add(watchable);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._watchableSubscriptions);
         }
 
         public void UnsubscribeToWatchable(Watchable watchable)
         {
             User DBObject = GetMatchingObject();
             watchable.RemoveSubscriber(this);
-            _watchableSubscriptions.Remove(watchable);
             DBObject._watchableSubscriptions.Remove(watchable);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._watchableSubscriptions);
         }
 
         public void AddToWatched(Watchable watchable)
         {
             User DBObject = GetMatchingObject();
-            _watched.Add(watchable);
+            //            _watched.Add(watchable);
             DBObject._watched.Add(watchable);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._watched);
         }
 
         public void RemoveFromWatched(Watchable watchable)
         {
             User DBObject = GetMatchingObject();
-            _watched.Remove(watchable);
+            //            _watched.Remove(watchable);
             DBObject._watched.Remove(watchable);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._watched);
         }
 
         public void AddToWatchList(Watchable watchable)
         {
             User DBObject = GetMatchingObject();
-            _watchList.Add(watchable);
+            //            _watchList.Add(watchable);
             DBObject._watchList.Add(watchable);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._watchList);
         }
 
         public void RemoveFromWatchList(Watchable watchable)
         {
             User DBObject = GetMatchingObject();
-            _watchList.Remove(watchable);
+            //            _watchList.Remove(watchable);
             DBObject._watchList.Remove(watchable);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._watchList);
         }
 
         public void UpdateObservers()

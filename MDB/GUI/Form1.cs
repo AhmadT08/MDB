@@ -26,7 +26,12 @@ namespace MDB
         {
             InitializeComponent();
             initalizeMovies();
+            if (MultimediaDB.sessionUsername == "admin")
+            {
+                adminControl.Visible = true;
+            }
         }
+
 
         private void createPictureBoxandTitle(int id, Image poster, String title, String type)
         {
@@ -91,7 +96,7 @@ namespace MDB
         {
             PictureBox op = (PictureBox)sender;
             String[] lo = op.Name.Split('-');
-            Console.WriteLine(lo[0]);
+            Console.WriteLine(lo[0] + "-" + lo[1]);
             ShowMovie showMovie = new ShowMovie(Convert.ToInt32(lo[1]), lo[0]);
             showMovie.ShowDialog();
         }
@@ -126,7 +131,7 @@ namespace MDB
             while (show.HasNext())
             {
                 showClass = (Show)show.Next();
-                createPictureBoxandTitle(movieClass.GetID(), (Image)showClass.getPoster(), showClass.GetTitleName(), "Show");
+                createPictureBoxandTitle(showClass.GetID(), (Image)showClass.getPoster(), showClass.GetTitleName(), "Show");
             }
         }
 
@@ -155,5 +160,16 @@ namespace MDB
             Console.WriteLine("Hello");
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            addMovie movieWindow = new addMovie();
+            movieWindow.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            addShow showWindow = new addShow();
+            showWindow.ShowDialog();
+        }
     }
 }
