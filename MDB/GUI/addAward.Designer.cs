@@ -36,16 +36,18 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.comboBox4);
@@ -60,7 +62,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(787, 453);
+            this.panel1.Size = new System.Drawing.Size(652, 323);
             this.panel1.TabIndex = 0;
             // 
             // label14
@@ -69,7 +71,7 @@
             this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.label14.Font = new System.Drawing.Font("Gill Sans MT", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(101, 285);
+            this.label14.Location = new System.Drawing.Point(25, 191);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(56, 27);
             this.label14.TabIndex = 45;
@@ -81,7 +83,7 @@
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.label13.Font = new System.Drawing.Font("Gill Sans MT", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(101, 243);
+            this.label13.Location = new System.Drawing.Point(25, 149);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(47, 27);
             this.label13.TabIndex = 44;
@@ -209,10 +211,11 @@
             "1902",
             "1901",
             "1900"});
-            this.comboBox4.Location = new System.Drawing.Point(189, 246);
+            this.comboBox4.Location = new System.Drawing.Point(113, 152);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(155, 24);
             this.comboBox4.TabIndex = 43;
+            this.comboBox4.Text = "2017";
             // 
             // label12
             // 
@@ -220,7 +223,7 @@
             this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.label12.Font = new System.Drawing.Font("Gill Sans MT", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(101, 202);
+            this.label12.Location = new System.Drawing.Point(25, 108);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(81, 27);
             this.label12.TabIndex = 42;
@@ -229,7 +232,7 @@
             // textBox6
             // 
             this.textBox6.Font = new System.Drawing.Font("Gill Sans MT", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(188, 198);
+            this.textBox6.Location = new System.Drawing.Point(112, 104);
             this.textBox6.MinimumSize = new System.Drawing.Size(4, 31);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(155, 31);
@@ -241,7 +244,7 @@
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.label11.Font = new System.Drawing.Font("Gill Sans MT", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(100, 153);
+            this.label11.Location = new System.Drawing.Point(24, 59);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(46, 27);
             this.label11.TabIndex = 40;
@@ -253,27 +256,16 @@
             this.comboBox3.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.comboBox3.Location = new System.Drawing.Point(189, 289);
+            this.comboBox3.Location = new System.Drawing.Point(113, 195);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(155, 24);
             this.comboBox3.TabIndex = 39;
             this.comboBox3.Text = "No";
             // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Gill Sans MT", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(372, 215);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(51, 30);
-            this.button3.TabIndex = 38;
-            this.button3.Text = "Add";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("Gill Sans MT", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(152, 151);
+            this.textBox5.Location = new System.Drawing.Point(76, 57);
             this.textBox5.MinimumSize = new System.Drawing.Size(4, 31);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(191, 31);
@@ -285,7 +277,7 @@
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.label10.Font = new System.Drawing.Font("Gill Sans MT", 11.8125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(101, 111);
+            this.label10.Location = new System.Drawing.Point(25, 17);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(78, 30);
             this.label10.TabIndex = 36;
@@ -296,16 +288,38 @@
             this.listBox2.Font = new System.Drawing.Font("Gill Sans MT", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 21;
-            this.listBox2.Location = new System.Drawing.Point(447, 151);
+            this.listBox2.Location = new System.Drawing.Point(371, 57);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(214, 172);
             this.listBox2.TabIndex = 35;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Gill Sans MT", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(296, 121);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(51, 30);
+            this.button3.TabIndex = 38;
+            this.button3.Text = "Add";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Gill Sans MT", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(578, 281);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(62, 30);
+            this.button1.TabIndex = 46;
+            this.button1.Text = "Done";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // addAward
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(787, 453);
+            this.ClientSize = new System.Drawing.Size(652, 323);
             this.Controls.Add(this.panel1);
             this.Name = "addAward";
             this.Text = "addAward";
@@ -325,9 +339,10 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Button button1;
     }
 }

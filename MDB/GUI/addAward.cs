@@ -12,7 +12,8 @@ namespace MDB.GUI
 {
     public partial class addAward : Form
     {
-        Boolean won;
+        bool won;
+        addMovie movie = new addMovie();
         public addAward()
         {
             InitializeComponent();
@@ -20,17 +21,37 @@ namespace MDB.GUI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (this.comboBox3.Text.Equals("Yes"))
+            if (textBox5.Text == "none")
             {
-                won = true;
-            }
-            else if (this.comboBox3.Text.Equals("No"))
-            {
-                won = false;
-            }
-            this.listBox2.Items.Add(this.textBox5.Text);
-            this.textBox5.Text = "";
 
+            }
+            else
+            {
+                int year = Convert.ToInt32(comboBox4.Text);
+                string category = textBox6.Text;
+                string title = textBox5.Text;
+                if (comboBox3.Text.Equals("Yes"))
+                {
+                    won = true;
+                    Award newAward = new Award(year, category, title, won, new Watchable());
+                    addMovie.wonAward.Add(newAward);
+
+                }
+                else if (comboBox3.Text.Equals("No"))
+                {
+                    won = false;
+                    Award newAward = new Award(year, category, title, won, new Watchable());
+                    addMovie.nomAward.Add(newAward);
+                }
+                listBox2.Items.Add(textBox5.Text);
+                textBox5.Text = "";
+                textBox6.Text = "";
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
