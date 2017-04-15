@@ -107,7 +107,17 @@ namespace MDB.GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            MDB.Movie m = MDB.Movie.GetMovieByID(_ID);
+            if (!MultimediaDB.sessionUser.GetWatchList().Contains(m))
+            {
+                MultimediaDB.sessionUser.AddToWatchList(m);
+                button1.Text = "Remove From Watchlist";
+            }
+            else
+            {
+                MultimediaDB.sessionUser.RemoveFromWatchList(m);
+                button1.Text = "Add To Watchlist";
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -121,18 +131,31 @@ namespace MDB.GUI
             if (MultimediaDB.sessionUser.GetWatchableSubscriptions().Contains(m))
             {
                 MultimediaDB.sessionUser.UnsubscribeToWatchable(m);
-                Console.WriteLine(MultimediaDB.sessionUser.GetWatchableSubscriptions().Count);
                 MessageBox.Show("Successfully unsubscribed to " + m.GetTitleName());
                 button3.Text = "Subscribe";
             }
             else
             {
                 MultimediaDB.sessionUser.SubscribeToWatchable(m);
-                Console.WriteLine(MultimediaDB.sessionUser.GetWatchableSubscriptions().Count);
                 MessageBox.Show("Successfully subscribed to " + m.GetTitleName());
                 button3.Text = "Unsubscribe";
             }
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MDB.Movie m = MDB.Movie.GetMovieByID(_ID);
+            if (!MultimediaDB.sessionUser.GetWatched().Contains(m))
+            {
+                MultimediaDB.sessionUser.AddToWatched(m);
+                button2.Text = "Watched";
+            }
+            else
+            {
+                MultimediaDB.sessionUser.RemoveFromWatched(m);
+                button2.Text = "Not Watched";
+            }
         }
     }
 }
