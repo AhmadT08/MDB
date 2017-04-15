@@ -61,6 +61,24 @@ namespace MDB.GUI
                 {
                     button3.Text = "Subscribe";
                 }
+
+                if (MultimediaDB.sessionUser.GetWatchList().Contains(watchable))
+                {
+                    button1.Text = "Remove From Watchlist";
+                }
+                else
+                {
+                    button1.Text = "Add To Watchlist";
+                }
+
+                if (MultimediaDB.sessionUser.GetWatched().Contains(watchable))
+                {
+                    button2.Text = "Watched";
+                }
+                else
+                {
+                    button2.Text = "Not Watched";
+                }
             }
             else
             {
@@ -91,6 +109,24 @@ namespace MDB.GUI
                 else
                 {
                     button3.Text = "Subscribe";
+                }
+
+                if (MultimediaDB.sessionUser.GetWatchList().Contains(watchable))
+                {
+                    button1.Text = "Remove From Watchlist";
+                }
+                else
+                {
+                    button1.Text = "Add To Watchlist";
+                }
+
+                if (MultimediaDB.sessionUser.GetWatched().Contains(watchable))
+                {
+                    button2.Text = "Watched";
+                }
+                else
+                {
+                    button2.Text = "Not Watched";
                 }
             }
         }
@@ -142,12 +178,14 @@ namespace MDB.GUI
             {
                 MultimediaDB.sessionUser.UnsubscribeToWatchable(m);
                 MessageBox.Show("Successfully unsubscribed to " + m.GetTitleName());
+                Console.WriteLine(m.GetSubscribers().Count);
                 button3.Text = "Subscribe";
             }
             else
             {
                 MultimediaDB.sessionUser.SubscribeToWatchable(m);
                 MessageBox.Show("Successfully subscribed to " + m.GetTitleName());
+                Console.WriteLine(m.GetSubscribers().Count);
                 button3.Text = "Unsubscribe";
             }
 

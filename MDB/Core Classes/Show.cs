@@ -129,6 +129,8 @@ namespace MDB
             DBObject._numberOfEpisodes++;
             MultimediaDB.db.Store(DBObject._episodeList);
             Update(DBObject);
+
+            Notify("A new episode of " + GetTitleName() + " has been released. Episode " + episode.GetNumber() + ", titled " + episode.GetTitle() + ".");
         }
 
         public DateTime GetPilotDate()

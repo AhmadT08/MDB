@@ -13,7 +13,6 @@ namespace MDB
     {
         public static IObjectContainer db;
         public static User sessionUser;
-        public static String sessionUsername;
         [STAThread]
         static void Main()
         {
@@ -28,9 +27,10 @@ namespace MDB
             //                            User a = (User)AllUsers.Next();
             //                            db.Delete(a);
             //                        }
-
-            //                        User x = new User("password", "Tomnaz1", new List<Watchable>(), new List<Watchable>(), new FullName("Ahmad", "Hisham"), DateTime.Today, "dsiajofdsoifja",
-            //                            new List<Watchable>(), new List<Person>());
+            //
+            //            User x = new User("password", "Tomnaz1", new List<Watchable>(), new List<Watchable>(), new FullName("Ahmad", "Hisham"), DateTime.Today, "dsiajofdsoifja",
+            //                new List<Watchable>(), new List<Person>(), new List<string>());
+            sessionUser = User.GetUserByUsername("Tomnaz1");
             //            sessionUser.SetPassword("password2");
             //                        Console.WriteLine(sessionUser.GetPassword());
             //            Console.WriteLine(sessionUser.GetWatchableSubscriptions().Count);
@@ -46,19 +46,19 @@ namespace MDB
 
             //}
 
-            //            Show movieClass = new Show();
-            //            IObjectSet movie = db.QueryByExample(typeof(Show));
-            //            while (movie.HasNext())
-            //            {
-            //                movieClass = (Show)movie.Next();
-            //                Console.WriteLine(movieClass.GetID());
-            //                Console.WriteLine(movieClass.GetTitleName());
-            //                Console.WriteLine(Show.GetShowByID(movieClass.GetID()).GetSeasons());
-            //            }
+            Movie movieClass = new Movie();
+            IObjectSet movie = db.QueryByExample(typeof(Movie));
+            while (movie.HasNext())
+            {
+                movieClass = (Movie)movie.Next();
+                Console.WriteLine(movieClass.GetID());
+                Console.WriteLine(movieClass.GetTitleName());
+                Console.WriteLine(movieClass.GetSubscribers());
+            }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new Form1());
         }
     }
 }

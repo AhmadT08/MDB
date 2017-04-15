@@ -18,8 +18,9 @@ namespace MDB
         private string _email;
         private List<Watchable> _watchableSubscriptions;
         private List<Person> _personSubscriptions;
+        private List<String> _notifications;
 
-        public User(string password, string username, List<Watchable> watched, List<Watchable> watchList, FullName name, DateTime dateOfBirth, string email, List<Watchable> watchableSubscriptions, List<Person> personSubscriptions)
+        public User(string password, string username, List<Watchable> watched, List<Watchable> watchList, FullName name, DateTime dateOfBirth, string email, List<Watchable> watchableSubscriptions, List<Person> personSubscriptions, List<string> notifications)
         {
             _password = password;
             _username = username;
@@ -30,6 +31,7 @@ namespace MDB
             _email = email;
             _watchableSubscriptions = watchableSubscriptions;
             _personSubscriptions = personSubscriptions;
+            _notifications = notifications;
             MultimediaDB.db.Store(this);
         }
 
@@ -206,6 +208,19 @@ namespace MDB
             MultimediaDB.db.Store(DBObject._personSubscriptions);
         }
 
+        public List<String> GetNotifications()
+        {
+            return _notifications;
+        }
+
+        public void SetNotifications(List<String> notifList)
+        {
+            User DBObject = GetMatchingObject();
+            _notifications = notifList;
+            DBObject._notifications = notifList;
+            MultimediaDB.db.Store(DBObject._notifications);
+        }
+
         public void SubscribeToPerson(Person person)
         {
             User DBObject = GetMatchingObject();
@@ -272,9 +287,16 @@ namespace MDB
             MultimediaDB.db.Store(DBObject._watchList);
         }
 
-        public void UpdateObservers()
+        public void AddNotification(string notification)
         {
-            Console.WriteLine("{0}: A new product has arrived at store", this.GetEmail());
+            User DBObject = GetMatchingObject();
+            DBObject._notifications.Add(notification);
+            MultimediaDB.db.Store(DBObject._notifications);
+        }
+
+        public void UpdateObservers(string notification)
+        {
+            AddNotification(notification);
         }
     }
 }
