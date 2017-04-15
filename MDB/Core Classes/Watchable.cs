@@ -203,6 +203,10 @@ namespace MDB
             DBObject._subscribers.Add(sub);
             Update(DBObject);
         }
+        public void Notify()
+        {
+            _subscribers.ForEach(x => x.UpdateObservers());
+        }
 
         public void RemoveSubscriber(User sub)
         {
@@ -252,5 +256,14 @@ namespace MDB
             return returnImage;
         }
 
+        public void Subscribe(User observer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Unsubscribe(User observer)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

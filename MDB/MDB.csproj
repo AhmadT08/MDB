@@ -141,15 +141,21 @@
     <Compile Include="Core Classes\FullName.cs" />
     <Compile Include="Core Classes\Person.cs" />
     <Compile Include="Core Classes\MultimediaDB.cs" />
-    <Compile Include="GUI\Login.cs" />
+    <Compile Include="GUI\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\RegisterUser.cs" />
+    <Compile Include="GUI\RegisterUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\RegisterUser.Designer.cs">
       <DependentUpon>RegisterUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ShowMovie.cs" />
+    <Compile Include="GUI\ShowMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\ShowMovie.Designer.cs">
       <DependentUpon>ShowMovie.cs</DependentUpon>
     </Compile>
