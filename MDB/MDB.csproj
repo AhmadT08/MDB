@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -55,34 +55,34 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cecil.FlowAnalysis">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Cecil.FlowAnalysis.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Cecil.FlowAnalysis.dll</HintPath>
     </Reference>
     <Reference Include="Db4oBench">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4oBench.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4oBench.dll</HintPath>
     </Reference>
     <Reference Include="Db4objects.Db4o">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4objects.Db4o.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4objects.Db4o.dll</HintPath>
     </Reference>
     <Reference Include="Db4objects.Db4o.Instrumentation">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4objects.Db4o.Instrumentation.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4objects.Db4o.Instrumentation.dll</HintPath>
     </Reference>
     <Reference Include="Db4objects.Db4o.NativeQueries">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4objects.Db4o.NativeQueries.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4objects.Db4o.NativeQueries.dll</HintPath>
     </Reference>
     <Reference Include="Db4oTool">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4oTool.exe</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4oTool.exe</HintPath>
     </Reference>
     <Reference Include="Db4oTool.MSBuild">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4oTool.MSBuild.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Db4oTool.MSBuild.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Mono.Cecil.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Pdb">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Mono.Cecil.Pdb.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Mono.Cecil.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.GetOptions">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Mono.GetOptions.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Db4objects\db4o-7.2\Program Files (x86)\Db4objects\db4o-7.2\bin\net-2.0\Mono.GetOptions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -141,6 +141,18 @@
     <Compile Include="Core Classes\FullName.cs" />
     <Compile Include="Core Classes\Person.cs" />
     <Compile Include="Core Classes\MultimediaDB.cs" />
+    <Compile Include="GUI\Login.cs" />
+    <Compile Include="GUI\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\RegisterUser.cs" />
+    <Compile Include="GUI\RegisterUser.Designer.cs">
+      <DependentUpon>RegisterUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ShowMovie.cs" />
+    <Compile Include="GUI\ShowMovie.Designer.cs">
+      <DependentUpon>ShowMovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -167,6 +179,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\RegisterUser.resx">
+      <DependentUpon>RegisterUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ShowMovie.resx">
+      <DependentUpon>ShowMovie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
