@@ -263,7 +263,8 @@ namespace MDB.GUI
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            addMovie movie = new addMovie();
+            movie.ShowDialog();
         }
     }
 }
