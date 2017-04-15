@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MDB.Core_Classes;
+using Db4objects.Db4o;
 
 namespace MDB.GUI
 {
@@ -58,9 +52,16 @@ namespace MDB.GUI
             User u = new User("qweewq", "TOMNAZ1", new List<Watchable>(), new List<Watchable>(), ana, dateOfBirth, "boss_tomna@hotmail.com", new List<Watchable>(), new List<Person>());
             us.Add(u);
             //u.SetWatchableSubscriptions(new List<Watchable>());
-            Movie m = Movie;
-            f.AddSubscriber(u);
-            f.Notify();
+            Movie m = Movie.GetMovieByTitle("Her");
+            u.SubscribeToWatchable(m);
+
+            User movieClass = new User();
+            IObjectSet movie = MDB.MultimediaDB.db.QueryByExample(typeof(User));
+            while (movie.HasNext())
+            {
+                movieClass = (User)movie.Next();
+                Console.WriteLine(movieClass.GetWatchableSubscriptions().Count);
+            }
         }
     }
 }

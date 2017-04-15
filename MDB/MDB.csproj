@@ -100,8 +100,6 @@
     <Compile Include="Core Classes\Award.cs" />
     <Compile Include="Core Classes\Episode.cs" />
     <Compile Include="Core Classes\Feature.cs" />
-    <Compile Include="Core Classes\Observer.cs" />
-    <Compile Include="Core Classes\Subject.cs" />
     <Compile Include="GUI\addAward.cs">
       <SubType>Form</SubType>
     </Compile>

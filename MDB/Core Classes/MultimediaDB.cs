@@ -27,12 +27,20 @@ namespace MDB
             //{
 
             //}
-            Movie movieClass = new Movie();
-            IObjectSet movie = db.QueryByExample(typeof(Movie));
+            //User movieClass = new User();
+            //IObjectSet movie = MDB.MultimediaDB.db.QueryByExample(typeof(User));
+            //while (movie.HasNext())
+            //{
+            //    movieClass = (User)movie.Next();
+            //    Console.WriteLine(movieClass.GetEmail());
+            //}
+
+            User movieClass = new User();
+            IObjectSet movie = MDB.MultimediaDB.db.QueryByExample(typeof(User));
             while (movie.HasNext())
             {
-                movieClass = (Movie)movie.Next();
-                Console.WriteLine(movieClass.GetTitleName());
+                movieClass = (User)movie.Next();
+                Console.WriteLine(movieClass.GetWatchableSubscriptions().Count);
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
