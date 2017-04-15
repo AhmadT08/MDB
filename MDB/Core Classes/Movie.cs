@@ -71,9 +71,9 @@ namespace MDB
 
             Movie x = new Movie();
             IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Movie));
-            for (int i = 0; i < AllObjects.Count; i++)
+            while (AllObjects.HasNext())
             {
-                x = (Movie)AllObjects[i];
+                x = (Movie)AllObjects.Next();
                 if (x.GetID().Equals(ID))
                 {
                     result = x;
@@ -89,9 +89,9 @@ namespace MDB
 
             Movie x = new Movie();
             IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Movie));
-            for (int i = 0; i < AllObjects.Count; i++)
+            while (AllObjects.HasNext())
             {
-                x = (Movie)AllObjects[i];
+                x = (Movie)AllObjects.Next();
                 if (x.GetTitleName().Equals(title))
                 {
                     result = x;
