@@ -79,9 +79,9 @@ namespace MDB
         public void AddAwardNomination(Award awardNomination)
         {
             Watchable DBObject = GetMatchingObject();
-            _awardNominations.Add(awardNomination);
+            //            _awardNominations.Add(awardNomination);
             DBObject._awardNominations.Add(awardNomination);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._awardNominations);
         }
 
         public List<Award> GetAwardWins()
@@ -92,9 +92,9 @@ namespace MDB
         public void AddAwardWin(Award awardWin)
         {
             Watchable DBObject = GetMatchingObject();
-            _awardWins.Add(awardWin);
+            //            _awardWins.Add(awardWin);
             DBObject._awardWins.Add(awardWin);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._awardWins);
         }
 
         public List<string> GetGenre()
@@ -107,7 +107,7 @@ namespace MDB
             Watchable DBObject = GetMatchingObject();
             _genre = genre;
             DBObject._genre = genre;
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._genre);
         }
 
         public List<Person> GetMainCast()
@@ -120,15 +120,15 @@ namespace MDB
             Watchable DBObject = GetMatchingObject();
             _mainCast = mainCast;
             DBObject._mainCast = mainCast;
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._mainCast);
         }
 
         public void AddToMainCast(Person cast)
         {
             Watchable DBObject = GetMatchingObject();
-            _mainCast.Add(cast);
+            //            _mainCast.Add(cast);
             DBObject._mainCast.Add(cast);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._mainCast);
         }
 
         public string GetMpaaRating()
@@ -193,15 +193,15 @@ namespace MDB
             Watchable DBObject = GetMatchingObject();
             _subscribers = subscribers;
             DBObject._subscribers = subscribers;
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._subscribers);
         }
 
         public void AddSubscriber(User sub)
         {
             Watchable DBObject = GetMatchingObject();
-            _subscribers.Add(sub);
+            //            _subscribers.Add(sub);
             DBObject._subscribers.Add(sub);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._subscribers);
         }
         public void Notify()
         {
@@ -211,9 +211,9 @@ namespace MDB
         public void RemoveSubscriber(User sub)
         {
             Watchable DBObject = GetMatchingObject();
-            _subscribers.Remove(sub);
+            //            _subscribers.Remove(sub);
             DBObject._subscribers.Remove(sub);
-            Update(DBObject);
+            MultimediaDB.db.Store(DBObject._subscribers);
         }
 
         public string GetTitleName()

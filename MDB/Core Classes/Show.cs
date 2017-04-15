@@ -123,10 +123,11 @@ namespace MDB
         public void AddEpisode(Episode episode)
         {
             Show DBObject = (Show)GetMatchingObject();
-            _episodeList.Add(episode);
-            _numberOfEpisodes++;
+            //            _episodeList.Add(episode);
+            //            _numberOfEpisodes++;
             DBObject._episodeList.Add(episode);
             DBObject._numberOfEpisodes++;
+            MultimediaDB.db.Store(DBObject._episodeList);
             Update(DBObject);
         }
 
