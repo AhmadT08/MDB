@@ -10,6 +10,7 @@ namespace MDB.GUI
     {
         int _ID;
         string _Watchabletype;
+
         public ShowMovie(int ID, string type)
         {
             InitializeComponent();
@@ -22,10 +23,66 @@ namespace MDB.GUI
         {
             if (_Watchabletype == "movie")
             {
-                MDB.Movie show = MDB.Movie.GetMovieByID(_ID);
-                pictureBox1.Image = (Image)show.getPoster();
-                label1.Text = show.GetTitleName();
+                MDB.Movie watchable = MDB.Movie.GetMovieByID(_ID);
+                pictureBox1.Image = (Image)watchable.getPoster();
+                label1.Text = watchable.GetTitleName();
+                label2.Text = watchable.GetReleaseDate().Year.ToString();
+                label3.Text = watchable.GetRunTime() + "min";
+                label4.Text = "";
+                for (int i = 0; i < watchable.GetGenre().Count; i++)
+                {
+                    if (i == watchable.GetGenre().Count - 1)
+                    {
+                        label4.Text += watchable.GetGenre()[i];
+                    }
+                    else
+                    {
+                        label4.Text += watchable.GetGenre()[i] + "/";
+                    }
+                }
+                label5.Text = watchable.GetRating() + "%";
+                richTextBox1.Text = watchable.GetSynopsis();
+                //                Console.WriteLine(MultimediaDB.sessionUser.GetWatchableSubscriptions().Count);
+                //                List<Watchable> x = MultimediaDB.sessionUser.GetWatchableSubscriptions();
+                if (MultimediaDB.sessionUser.GetWatchableSubscriptions().Contains(watchable))
+                {
+                    button3.Text = "Unsubscribe";
+                }
+                else
+                {
+                    button3.Text = "Subscribe";
+                }
+            }
+            else
+            {
+                MDB.Show watchable = MDB.Show.GetShowByID(_ID);
+                pictureBox1.Image = (Image)watchable.getPoster();
+                label1.Text = watchable.GetTitleName();
+                label2.Text = watchable.GetPilotDate().Year.ToString();
+                label3.Text = watchable.GetSeasons() + " seasons";
+                label4.Text = "";
+                for (int i = 0; i < watchable.GetGenre().Count; i++)
+                {
+                    if (i == watchable.GetGenre().Count - 1)
+                    {
+                        label4.Text += watchable.GetGenre()[i];
+                    }
+                    else
+                    {
+                        label4.Text += watchable.GetGenre()[i] + "/";
+                    }
+                }
+                label5.Text = watchable.GetRating() + "%";
+                richTextBox1.Text = watchable.GetSynopsis();
 
+                if (MultimediaDB.sessionUser.GetWatchableSubscriptions().Contains(watchable))
+                {
+                    button3.Text = "Unsubscribe";
+                }
+                else
+                {
+                    button3.Text = "Subscribe";
+                }
             }
         }
 
@@ -69,15 +126,9 @@ namespace MDB.GUI
             us.Add(u);
             //u.SetWatchableSubscriptions(new List<Watchable>());
             MDB.Movie m = MDB.Movie.GetMovieByTitle("Birdman");
-            u.SubscribeToWatchable(m);
 
-            User movieClass = new User();
-            IObjectSet movie = MDB.MultimediaDB.db.QueryByExample(typeof(User));
-            while (movie.HasNext())
-            {
-                movieClass = (User)movie.Next();
-                Console.WriteLine(movieClass.GetWatchableSubscriptions().Count);
-            }
+            MultimediaDB.sessionUser.SubscribeToWatchable(m);
+
         }
     }
 }

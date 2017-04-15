@@ -12,10 +12,21 @@ namespace MDB
     static class MultimediaDB
     {
         public static IObjectContainer db;
+        public static User sessionUser;
         [STAThread]
         static void Main()
         {
             db = Db4oFactory.OpenFile("../../MDBdraft.yap");
+            //            sessionUser = User.GetUserByUsername("TOMNAZ1");
+            //(string password, string username, List<Watchable> watched, 
+            //List<Watchable> watchList, FullName name, DateTime dateOfBirth, 
+            //string email, List<Watchable> watchableSubscriptions, List<Person> personSubscriptions)
+
+//            User x = new User("password", "Tomnaz1", new List<Watchable>(), new List<Watchable>(), new FullName("Ahmad", "Hisham"), DateTime.Today, "dsiajofdsoifja",
+//                new List<Watchable>(), new List<Person>());
+
+            sessionUser = User.GetUserByUsername("Tomnaz1");
+            Console.WriteLine(sessionUser.GetWatchableSubscriptions().Count);
             //try
             //{
             //    Movie f = new Movie(new List<Award>(), new List<Award>(), new List<String>(),
@@ -27,13 +38,17 @@ namespace MDB
             //{
 
             //}
+
             Show movieClass = new Show();
             IObjectSet movie = db.QueryByExample(typeof(Show));
             while (movie.HasNext())
             {
                 movieClass = (Show)movie.Next();
+                Console.WriteLine(movieClass.GetID());
                 Console.WriteLine(movieClass.GetTitleName());
+                Console.WriteLine(Show.GetShowByID(movieClass.GetID()).GetSeasons());
             }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

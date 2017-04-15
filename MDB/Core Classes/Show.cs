@@ -32,7 +32,7 @@ namespace MDB
 
         }
 
-        public new Show GetMatchingObject()
+        public override Watchable GetMatchingObject()
         {
             Show result = new Show();
             Show x = new Show();
@@ -53,7 +53,7 @@ namespace MDB
             MultimediaDB.db.Store(x);
         }
 
-        public new void Delete()
+        public override void Delete()
         {
             Show x = new Show();
             IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Show));
@@ -73,9 +73,9 @@ namespace MDB
 
             Show x = new Show();
             IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(Show));
-            for (int i = 0; i < AllObjects.Count; i++)
+            while (AllObjects.HasNext())
             {
-                x = (Show)AllObjects[i];
+                x = (Show)AllObjects.Next();
                 if (x.GetID().Equals(ID))
                 {
                     result = x;
@@ -122,7 +122,7 @@ namespace MDB
 
         public void AddEpisode(Episode episode)
         {
-            Show DBObject = GetMatchingObject();
+            Show DBObject = (Show)GetMatchingObject();
             _episodeList.Add(episode);
             _numberOfEpisodes++;
             DBObject._episodeList.Add(episode);
@@ -137,7 +137,7 @@ namespace MDB
 
         public void SetPilotDate(DateTime date)
         {
-            Show DBObject = GetMatchingObject();
+            Show DBObject = (Show)GetMatchingObject();
             _pilotDate = date;
             DBObject._pilotDate = date;
             Update(DBObject);
@@ -150,7 +150,7 @@ namespace MDB
 
         public void SetNumberOfEpisodes(int ep)
         {
-            Show DBObject = GetMatchingObject();
+            Show DBObject = (Show)GetMatchingObject();
             _numberOfEpisodes = ep;
             DBObject._numberOfEpisodes = ep;
             Update(DBObject);
@@ -163,7 +163,7 @@ namespace MDB
 
         public void SetSeasons(int s)
         {
-            Show DBObject = GetMatchingObject();
+            Show DBObject = (Show)GetMatchingObject();
             _seasons = s;
             DBObject._seasons = s;
             Update(DBObject);

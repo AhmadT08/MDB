@@ -51,7 +51,7 @@ namespace MDB
 
         }
 
-        public Watchable GetMatchingObject()
+        public virtual Watchable GetMatchingObject()
         {
             return new Watchable();
         }
@@ -61,7 +61,7 @@ namespace MDB
 
         }
 
-        public void Delete()
+        public virtual void Delete()
         {
 
         }

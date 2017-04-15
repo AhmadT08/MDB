@@ -73,6 +73,22 @@ namespace MDB
             }
         }
 
+        public static User GetUserByUsername(string username)
+        {
+            User result = new User();
+            User x = new User();
+            IObjectSet AllObjects = MultimediaDB.db.QueryByExample(typeof(User));
+            for (int i = 0; i < AllObjects.Count; i++)
+            {
+                x = (User)AllObjects[i];
+                if (x.GetUsername().Equals(username))
+                {
+                    result = x;
+                }
+            }
+            return result;
+        }
+
         public string GetUsername()
         {
             return _username;
