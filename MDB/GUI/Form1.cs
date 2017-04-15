@@ -26,7 +26,12 @@ namespace MDB
         {
             InitializeComponent();
             initalizeMovies();
+            if (MultimediaDB.sessionUsername == "admin")
+            {
+                adminControl.Visible = true;
+            }
         }
+
 
         private void createPictureBoxandTitle(int id, Image poster, String title, String type)
         {
@@ -155,5 +160,16 @@ namespace MDB
             Console.WriteLine("Hello");
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            addMovie movieWindow = new addMovie();
+            movieWindow.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            addShow showWindow = new addShow();
+            showWindow.ShowDialog();
+        }
     }
 }
