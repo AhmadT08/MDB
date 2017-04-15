@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MDB.Core_Classes;
 
 namespace MDB.GUI
 {
@@ -15,7 +16,7 @@ namespace MDB.GUI
         public ShowMovie()
         {
             InitializeComponent();
-            
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -50,11 +51,16 @@ namespace MDB.GUI
 
         private void button3_Click(object sender, EventArgs e)
         {
+
             FullName ana = new FullName("Ahmed", "hisham");
             DateTime dateOfBirth = new DateTime();
+            List<User> us = new List<User>();
             User u = new User("qweewq", "TOMNAZ1", new List<Watchable>(), new List<Watchable>(), ana, dateOfBirth, "boss_tomna@hotmail.com", new List<Watchable>(), new List<Person>());
-            u.SetWatchableSubscriptions(new List<Watchable>());
-
+            us.Add(u);
+            //u.SetWatchableSubscriptions(new List<Watchable>());
+            Movie m = Movie;
+            f.AddSubscriber(u);
+            f.Notify();
         }
     }
 }

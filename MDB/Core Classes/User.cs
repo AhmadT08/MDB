@@ -257,5 +257,10 @@ namespace MDB
             DBObject._watchList.Remove(watchable);
             Update(DBObject);
         }
+
+        public void UpdateObservers()
+        {
+            Console.WriteLine("{0}: A new product has arrived at store", this.GetEmail());
+        }
     }
 }

@@ -20,8 +20,8 @@ namespace MDB.GUI
         private void button1_Click(object sender, EventArgs e)
         {
             FullName fname = new FullName(textBox1.Text, textBox2.Text);
-            User u = new User(textBox4.Text, textBox4.Text, new List<Watchable>(), new List<Watchable>(), fname, dateTimePicker1.Value.Date,textBox5.Text,new List<Watchable>(),new List<Person>());
-            User.Update(u);
+            User u = new User(textBox4.Text, textBox3.Text, new List<Watchable>(), new List<Watchable>(), fname, dateTimePicker1.Value.Date,textBox5.Text,new List<Watchable>(),new List<Person>());
+            User.Update(u); 
             Login l = new Login();
             l.Show();
             this.Hide();

@@ -35,13 +35,39 @@ namespace MDB.GUI
             String Username = textBox1.Text;
             String password = textBox2.Text;
             User u = new User();
-
-            IObjectSet users = MDB.MultimediaDB.db.QueryByExample(typeof(User));
-            while (users.HasNext())
+            Form1 f = new Form1();
+            addMovie ad = new addMovie();
+            if (textBox1.Text.Equals("admin") && textBox2.Text.Equals("admin"))
             {
-                u = (User)users.Next();
-                Console.WriteLine(u.ge()[0].GetTitle());
+                ad.Show();
+                this.Hide();
             }
+            IObjectSet users = MDB.MultimediaDB.db.QueryByExample(typeof(User));
+            
+            for (int i = 0; i < users.Count; i++)
+            {
+                u = (User)users[i];
+              
+                 if (u.GetUsername() == textBox1.Text && u.GetPassword() == textBox2.Text)
+                {
+                f.Show();
+                this.Hide();
+                }
+                else
+                {
+                Console.WriteLine("Wrong Username or Password");
+            }
+        }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
