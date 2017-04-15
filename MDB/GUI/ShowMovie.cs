@@ -2,15 +2,31 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Db4objects.Db4o;
+using System.Drawing;
 
 namespace MDB.GUI
 {
     public partial class ShowMovie : Form
     {
-        public ShowMovie()
+        int _ID;
+        string _Watchabletype;
+        public ShowMovie(int ID, string type)
         {
             InitializeComponent();
+            _ID = ID;
+            _Watchabletype = type;
+            initializeData();
+        }
 
+        private void initializeData()
+        {
+            if (_Watchabletype == "movie")
+            {
+                MDB.Movie show = MDB.Movie.GetMovieByID(_ID);
+                pictureBox1.Image = (Image)show.getPoster();
+                label1.Text = show.GetTitleName();
+
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -52,7 +68,7 @@ namespace MDB.GUI
             User u = new User("qweewq", "TOMNAZ1", new List<Watchable>(), new List<Watchable>(), ana, dateOfBirth, "boss_tomna@hotmail.com", new List<Watchable>(), new List<Person>());
             us.Add(u);
             //u.SetWatchableSubscriptions(new List<Watchable>());
-            Movie m = Movie.GetMovieByTitle("Her");
+            MDB.Movie m = MDB.Movie.GetMovieByTitle("Birdman");
             u.SubscribeToWatchable(m);
 
             User movieClass = new User();

@@ -28,7 +28,7 @@ namespace MDB
             initalizeMovies();
         }
 
-        private void createPictureBoxandTitle(Image poster, String title, String type)
+        private void createPictureBoxandTitle(int id, Image poster, String title, String type)
         {
             Panel panel = new Panel();
             panel.Size = new System.Drawing.Size(150, 220);
@@ -59,7 +59,7 @@ namespace MDB
             {
                 panel.Location = new System.Drawing.Point(moviePicturePosition, 3);
                 panel.Name = "WrappermovieBox" + moviePictureBoxCounter;
-                picturebox.Name = "movieBox" + moviePictureBoxCounter;
+                picturebox.Name = "movie-" + id;
                 picturebox.TabIndex = moviePictureBoxCounter;
                 ItemTitle.Location = new Point(movieTitlePosition, 218);
                 ItemTitle.Name = "mLabel" + moviePictureBoxCounter;
@@ -74,7 +74,7 @@ namespace MDB
             {
                 panel.Location = new System.Drawing.Point(showPicturePosition, 3);
                 panel.Name = "WrappershowBox" + moviePictureBoxCounter;
-                picturebox.Name = "showBox" + showPictureBoxCounter;
+                picturebox.Name = "show-" + id;
                 picturebox.TabIndex = showPictureBoxCounter;
                 ItemTitle.Location = new Point(showTitlePosition, 218);
                 ItemTitle.Name = "sLabel" + showPictureBoxCounter;
@@ -89,7 +89,10 @@ namespace MDB
 
         private void picturebox_Click(object sender, EventArgs e)
         {
-            ShowMovie showMovie = new ShowMovie();
+            PictureBox op = (PictureBox)sender;
+            String[] lo = op.Name.Split('-');
+            Console.WriteLine(lo[0]);
+            ShowMovie showMovie = new ShowMovie(Convert.ToInt32(lo[1]), lo[0]);
             showMovie.ShowDialog();
         }
 
@@ -118,12 +121,12 @@ namespace MDB
             while (movie.HasNext())
             {
                 movieClass = (Movie)movie.Next();
-                createPictureBoxandTitle((Image)movieClass.getPoster(), movieClass.GetTitleName(), "Movie");
+                createPictureBoxandTitle(movieClass.GetID(), (Image)movieClass.getPoster(), movieClass.GetTitleName(), "Movie");
             }
             while (show.HasNext())
             {
                 showClass = (Show)show.Next();
-                createPictureBoxandTitle((Image)showClass.getPoster(), showClass.GetTitleName(), "Show");
+                createPictureBoxandTitle(movieClass.GetID(), (Image)showClass.getPoster(), showClass.GetTitleName(), "Show");
             }
         }
 
